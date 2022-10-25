@@ -1,7 +1,6 @@
 .user__info {
   display: grid;
   width: 336px;
-  min-height: 73px;
   column-gap: 18px;
   row-gap: 5px;
   grid-template-columns: 294px 1fr;
@@ -13,7 +12,6 @@
   .user__info {
     margin-left: 26px;
     width: 217px;
-    min-height: 54px;
     column-gap: 10px;
     row-gap: 6px;
     grid-template-columns: 189px 1fr;

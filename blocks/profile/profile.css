@@ -1,5 +1,4 @@
 .profile {
-  min-height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,7 +6,7 @@
 
 @media (max-width: 768px) {
   .profile {
-    min-height: 286px;
     flex-direction: column;
+    gap: 34px;
   }
 }

@@ -4,7 +4,6 @@
   position: relative;
   max-width: 430px;
   width: 100%;
-  min-height: 330px;
   border-radius: 10px;
   background-color: #fff;
 }
@@ -13,6 +12,5 @@
   .popup__container {
     padding: 25px 22px;
     max-width: 282px;
-    min-height: 322px;
   }
 }

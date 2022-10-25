@@ -1,0 +1,21 @@
+.user__edit-button {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #fff;
+  background-image: url(../../../images/edit-button.svg);
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  transition: opacity 1s ease;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
+  .user__edit-button {
+    background-size: 7px 7px;
+    width: 18px;
+    height: 18px;
+  }
+}

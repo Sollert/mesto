@@ -1,13 +1,15 @@
-.profile {
+.user {
+  width: 486px;
   min-height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-@media (max-width: 768px) {
-  .profile {
-    min-height: 286px;
+@media screen and (max-width: 768px) {
+  .user {
+    width: 282px;
+    min-height: 200px;
     flex-direction: column;
   }
 }

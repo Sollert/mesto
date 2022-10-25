@@ -4,6 +4,7 @@
   height: 33px;
   background-image: url("../../images/logo.svg");
   background-size: cover;
+  color: #fff;
 }
 
 @media screen and (max-width: 768px){

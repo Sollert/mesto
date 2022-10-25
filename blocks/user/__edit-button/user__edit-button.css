@@ -8,8 +8,12 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
-  transition: opacity 1s ease;
+  transition: opacity .3s ease;
   cursor: pointer;
+}
+
+.user__edit-button:hover {
+  opacity: .6;
 }
 
 @media screen and (max-width: 768px){

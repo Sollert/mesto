@@ -7,5 +7,10 @@
   background-position: center;
   background-color: #fff;
   align-self: end;
-  transition: opacity 1s ease;
+  transition: opacity .3s ease;
+}
+
+.card__like-button:not(.card__like-button_active):hover {
+  opacity: .5;
+  cursor: pointer;
 }

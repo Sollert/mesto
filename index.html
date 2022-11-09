@@ -24,48 +24,6 @@
       <button class="add-card-button" type="button" aria-label="Добавить место"></button>
     </section>
     <section class="cards" aria-label="Карточки">
-      <article class="card">
-        <img class="card__image" src="./images/karachaevsk.jpg" alt="Сентинский храм">
-        <div class="card__info">
-          <h2 class="card__title">Карачаевск</h2>
-          <button class="card__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/elbrus.jpg" alt="Эльбрус">
-        <div class="card__info">
-          <h2 class="card__title">Гора Эльбрус</h2>
-          <button class="card__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/dombai.jpg" alt="Домбай">
-        <div class="card__info">
-          <h2 class="card__title">Домбай</h2>
-          <button class="card__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/elbrus.jpg" alt="Эльбрус">
-        <div class="card__info">
-          <h2 class="card__title">Гора Эльбрус</h2>
-          <button class="card__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/dombai.jpg" alt="Домбай">
-        <div class="card__info">
-          <h2 class="card__title">Домбай</h2>
-          <button class="card__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/karachaevsk.jpg" alt="Сентинский храм">
-        <div class="card__info">
-          <h2 class="card__title">Карачаево-Черкесская республика</h2>
-          <button class="card__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
     </section>
   </main>
   <footer class="footer page__footer">
@@ -86,6 +44,15 @@
       <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
     </div>
   </div>
+  <template class="card-template">
+    <article class="card">
+      <img class="card__image">
+      <div class="card__info">
+        <h2 class="card__title"></h2>
+        <button class="card__like-button" type="button" aria-label="Нравится"></button>
+      </div>
+    </article>
+  </template>
   <script src="./pages/index.js"></script>
 </body>
 </html>

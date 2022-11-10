@@ -1,0 +1,9 @@
+.popup__card-container {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .popup__card-container {
+    margin: 27px 0 0;
+  }
+}

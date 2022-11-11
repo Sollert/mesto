@@ -36,13 +36,14 @@ const cardPopupCaption = cardPopup.querySelector('.popup__caption');
 const buttonAddCard = document.querySelector('.add-card-button')
 const buttonEditProfile = document.querySelector('.user__edit-button')
 
-const userNameField = popupEditProfile.querySelector('.form__element_theme_username')
-const userStatusField = popupEditProfile.querySelector('.form__element_theme_userstatus')
+const userNameField = popupEditProfile.querySelector('.form__element_theme_user-name')
+const userStatusField = popupEditProfile.querySelector('.form__element_theme_user-status')
 
 const userName = document.querySelector('.user__name')
 const userStatus = document.querySelector('.user__status')
 
-
+const cardTitleField = popupAddCard.querySelector('.form__element_theme_card-title')
+const cardImageField = popupAddCard.querySelector('.form__element_theme_card-image')
 
 // открыть попап
 const openPopup = (popup) => {
@@ -79,9 +80,15 @@ const insertUserInfoFromField = () => {
 
 // обработчик кнопки сохранения попапа
 const saveButtonHandler = (button, action, popup) => {
-  button.addEventListener(action, (evt) => {
+  button.addEventListener(action, function saveInfo(evt) {
     if (popup === popupEditProfile) {
       insertUserInfoFromField()
+      this.removeEventListener(action, saveInfo)
+    }
+
+    if (popup === popupAddCard) {
+      evt.preventDefault()
+      renderElement(cardsContainer, createCard('.card-template', cardTitleField.value, cardImageField.value))
     }
 
     evt.preventDefault()
@@ -122,32 +129,42 @@ const addClosePopupHandler = (button, action, popup) => {
   })
 }
 
-addOpenPopupHandler(buttonEditProfile, 'click', popupEditProfile)
-addOpenPopupHandler(buttonAddCard, 'click', popupAddCard)
-
-
-// Создать карточку
-function createCard(templateSelector, title, link) {
+// создать карточку
+const createCard = (templateSelector, title, link) => {
   const cardTemplate = document.querySelector(templateSelector).content;
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
   const cardTitle = cardElement.querySelector('.card__title')
+  const like = cardElement.querySelector('.card__like-button')
 
   cardImage.src = link
   cardImage.alt = title
   cardTitle.textContent = title
 
   addOpenPopupHandler(cardImage, 'click', cardPopup)
+  addLikeCardHandle(like, 'click')
 
   return cardElement
 }
 
-// Рендер элемента
-function renderElement(container, element) {
+// рендер элемента
+const renderElement = (container, element) => {
   container.prepend(element)
 }
 
-// Загрузить стартовые карточки из коробки
+// добавить слушатель лайка карточки
+const addLikeCardHandle = (button, action) => {
+  button.addEventListener(action, function (evt) {
+    evt.target.classList.toggle('card__like-button_active')
+  })
+}
+
+
+// загрузить стартовые карточки из коробки
 initialCards.forEach(card => {
   renderElement(cardsContainer, createCard('.card-template', card.name, card.link))
 })
+
+// стартовые слушатели
+addOpenPopupHandler(buttonEditProfile, 'click', popupEditProfile) // На кнопку редактирования профиля
+addOpenPopupHandler(buttonAddCard, 'click', popupAddCard) // На кнопку добавления карточки

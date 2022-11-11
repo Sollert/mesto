@@ -25,7 +25,70 @@ const initialCards = [
   }
 ];
 
-const cardsContainer = document.querySelector('.cards')
+const cardsContainer = document.querySelector('.cards');
+
+const popupEditProfile = document.querySelector('.popup_theme_edit-profile');
+const popupAddCard = document.querySelector('.popup_theme_add-card');
+const cardPopup = document.querySelector('.popup_theme_show-card');
+const cardPopupImage = cardPopup.querySelector('.popup__image');
+const cardPopupCaption = cardPopup.querySelector('.popup__caption');
+
+const buttonAddCard = document.querySelector('.add-card-button')
+const buttonEditProfile = document.querySelector('.user__edit-button')
+
+
+
+// открыть попап
+const openPopup = (popup) => {
+  const popupCloseButton = popup.querySelector('.popup__close-button')
+  popup.classList.add('popup_opened')
+  addClosePopupHandler(document, 'keydown', popup)
+  addClosePopupHandler(popup, 'click', popup)
+  addClosePopupHandler(popupCloseButton, 'click', popup)
+}
+
+// закрыть попап
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened')
+}
+
+// создать попап карточки
+const createCardPopup = (button) => {
+  cardPopupImage.src = button.src
+  cardPopupCaption.textContent = button.nextElementSibling.textContent
+}
+
+// обработчик открытия попапа
+const addOpenPopupHandler = (button, action, popup) => {
+  if (popup === cardPopup) {
+    createCardPopup(button)
+  }
+
+  button.addEventListener(action, () => {
+    openPopup(popup)
+  })
+}
+
+// обработчик закрытия попапа
+const handleClosePopup = (evt, popup) => {
+    if (evt.key === 'Escape' ||
+      !evt.key && (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')))
+    {
+      closePopup(popup)
+    }
+}
+
+// добавить обработчик закрытия попапа
+const addClosePopupHandler = (button, action, popup) => {
+  button.addEventListener(action, function closePopupHandler(evt) {
+    handleClosePopup(evt, popup)
+    this.removeEventListener(action, closePopupHandler)
+  })
+}
+
+addOpenPopupHandler(buttonEditProfile, 'click', popupEditProfile)
+addOpenPopupHandler(buttonAddCard, 'click', popupAddCard)
+
 
 // Создать карточку
 function createCard(templateSelector, title, link) {
@@ -38,6 +101,8 @@ function createCard(templateSelector, title, link) {
   cardImage.alt = title
   cardTitle.textContent = title
 
+  addOpenPopupHandler(cardImage, 'click', cardPopup)
+
   return cardElement
 }
 
@@ -45,7 +110,6 @@ function createCard(templateSelector, title, link) {
 function renderElement(container, element) {
   container.prepend(element)
 }
-
 
 // Загрузить стартовые карточки из коробки
 initialCards.forEach(card => {

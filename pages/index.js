@@ -125,7 +125,6 @@ const handleClosePopup = (evt, popup) => {
 const setClosePopupHandler = (button, action, popup) => {
   button.addEventListener(action, function closePopupHandler(evt) {
     handleClosePopup(evt, popup)
-    this.removeEventListener(action, closePopupHandler)
   })
 }
 

@@ -36,15 +36,23 @@ const cardPopupCaption = cardPopup.querySelector('.popup__caption');
 const buttonAddCard = document.querySelector('.add-card-button')
 const buttonEditProfile = document.querySelector('.user__edit-button')
 
+const userNameField = popupEditProfile.querySelector('.form__element_theme_username')
+const userStatusField = popupEditProfile.querySelector('.form__element_theme_userstatus')
+
+const userName = document.querySelector('.user__name')
+const userStatus = document.querySelector('.user__status')
+
 
 
 // открыть попап
 const openPopup = (popup) => {
   const popupCloseButton = popup.querySelector('.popup__close-button')
+  const popupSaveButton = popup.querySelector('.form__save-button')
   popup.classList.add('popup_opened')
   addClosePopupHandler(document, 'keydown', popup)
   addClosePopupHandler(popup, 'click', popup)
   addClosePopupHandler(popupCloseButton, 'click', popup)
+  saveButtonHandler(popupSaveButton, 'click', popup)
 }
 
 // закрыть попап
@@ -58,10 +66,38 @@ const createCardPopup = (button) => {
   cardPopupCaption.textContent = button.nextElementSibling.textContent
 }
 
+// подставить информацию в поле формы
+const insertInfoInField = (field, value) => {
+  field.value = value
+}
+
+// подставить информацию о юзере из формы
+const insertUserInfoFromField = () => {
+  userName.textContent = userNameField.value
+  userStatus.textContent = userStatusField.value
+}
+
+// обработчик кнопки сохранения попапа
+const saveButtonHandler = (button, action, popup) => {
+  button.addEventListener(action, (evt) => {
+    if (popup === popupEditProfile) {
+      insertUserInfoFromField()
+    }
+
+    evt.preventDefault()
+    closePopup(popup)
+  })
+}
+
 // обработчик открытия попапа
 const addOpenPopupHandler = (button, action, popup) => {
   if (popup === cardPopup) {
     createCardPopup(button)
+  }
+
+  if (popup === popupEditProfile) {
+    insertInfoInField(userNameField, userName.textContent)
+    insertInfoInField(userStatusField, userStatus.textContent)
   }
 
   button.addEventListener(action, () => {

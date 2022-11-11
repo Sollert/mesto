@@ -48,23 +48,20 @@ const cardImageField = popupAddCard.querySelector('.form__element_theme_card-ima
 // открыть попап
 const openPopup = (popup) => {
   const popupCloseButton = popup.querySelector('.popup__close-button')
-  const popupSaveButton = popup.querySelector('.form__save-button')
   popup.classList.add('popup_opened')
   setClosePopupHandler(document, 'keydown', popup)
   setClosePopupHandler(popup, 'click', popup)
   setClosePopupHandler(popupCloseButton, 'click', popup)
-  saveButtonHandler(popupSaveButton, 'click', popup)
+
+  if (popup === popupAddCard || popup === popupEditProfile) {
+    const popupSaveButton = popup.querySelector('.form__save-button')
+    saveButtonHandler(popupSaveButton, 'click', popup)
+  }
 }
 
 // закрыть попап
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened')
-}
-
-// создать попап карточки
-const createCardPopup = (button) => {
-  cardPopupImage.src = button.src
-  cardPopupCaption.textContent = button.nextElementSibling.textContent
 }
 
 // подставить информацию в поле формы
@@ -81,34 +78,37 @@ const insertUserInfoFromField = () => {
 // обработчик кнопки сохранения попапа
 const saveButtonHandler = (button, action, popup) => {
   button.addEventListener(action, function saveInfo(evt) {
-    if (popup === popupEditProfile) {
-      insertUserInfoFromField()
-      this.removeEventListener(action, saveInfo)
-    }
-
-    if (popup === popupAddCard) {
-      evt.preventDefault()
-      renderElement(cardsContainer, createCard('.card-template', cardTitleField.value, cardImageField.value))
-    }
 
     evt.preventDefault()
     closePopup(popup)
+
+    if (popup === popupEditProfile) {
+      insertUserInfoFromField()
+    }
+
+    if (popup === popupAddCard) {
+      renderElement(cardsContainer, createCard('.card-template', cardTitleField.value, cardImageField.value))
+      cardTitleField.value = ''
+      cardImageField.value = ''
+    }
+    this.removeEventListener(action, saveInfo)
   })
 }
 
 // обработчик открытия попапа
 const setOpenPopupHandler = (button, action, popup) => {
-  if (popup === cardPopup) {
-    createCardPopup(button)
-  }
-
-  if (popup === popupEditProfile) {
-    insertInfoInField(userNameField, userName.textContent)
-    insertInfoInField(userStatusField, userStatus.textContent)
-  }
-
   button.addEventListener(action, () => {
     openPopup(popup)
+
+    if (popup === cardPopup) {
+      cardPopupImage.src = button.src
+      cardPopupCaption.textContent = button.nextElementSibling.textContent
+    }
+
+    if (popup === popupEditProfile) {
+      insertInfoInField(userNameField, userName.textContent)
+      insertInfoInField(userStatusField, userStatus.textContent)
+    }
   })
 }
 

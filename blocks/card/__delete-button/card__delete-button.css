@@ -9,4 +9,10 @@
   width: 18px;
   height: 19px;
   border: none;
+  transition: opacity .3s ease;
+  cursor: pointer;
+}
+
+.card__delete-button:hover {
+  opacity: .5;
 }

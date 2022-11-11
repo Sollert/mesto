@@ -50,9 +50,9 @@ const openPopup = (popup) => {
   const popupCloseButton = popup.querySelector('.popup__close-button')
   const popupSaveButton = popup.querySelector('.form__save-button')
   popup.classList.add('popup_opened')
-  addClosePopupHandler(document, 'keydown', popup)
-  addClosePopupHandler(popup, 'click', popup)
-  addClosePopupHandler(popupCloseButton, 'click', popup)
+  setClosePopupHandler(document, 'keydown', popup)
+  setClosePopupHandler(popup, 'click', popup)
+  setClosePopupHandler(popupCloseButton, 'click', popup)
   saveButtonHandler(popupSaveButton, 'click', popup)
 }
 
@@ -97,7 +97,7 @@ const saveButtonHandler = (button, action, popup) => {
 }
 
 // обработчик открытия попапа
-const addOpenPopupHandler = (button, action, popup) => {
+const setOpenPopupHandler = (button, action, popup) => {
   if (popup === cardPopup) {
     createCardPopup(button)
   }
@@ -122,7 +122,7 @@ const handleClosePopup = (evt, popup) => {
 }
 
 // добавить обработчик закрытия попапа
-const addClosePopupHandler = (button, action, popup) => {
+const setClosePopupHandler = (button, action, popup) => {
   button.addEventListener(action, function closePopupHandler(evt) {
     handleClosePopup(evt, popup)
     this.removeEventListener(action, closePopupHandler)
@@ -142,9 +142,9 @@ const createCard = (templateSelector, title, link) => {
   cardImage.alt = title
   cardTitle.textContent = title
 
-  addOpenPopupHandler(cardImage, 'click', cardPopup)
-  addLikeCardHandle(likeButton, 'click')
-  addDeleteCardHandle(deleteButton, 'click')
+  setOpenPopupHandler(cardImage, 'click', cardPopup)
+  setLikeCardHandle(likeButton, 'click')
+  setDeleteCardHandle(deleteButton, 'click')
 
   return cardElement
 }
@@ -155,14 +155,14 @@ const renderElement = (container, element) => {
 }
 
 // добавить слушатель лайка карточки
-const addLikeCardHandle = (button, action) => {
+const setLikeCardHandle = (button, action) => {
   button.addEventListener(action, function (evt) {
     evt.target.classList.toggle('card__like-button_active')
   })
 }
 
 // добавить слушатель удаления карточки
-const addDeleteCardHandle = (button, action) => {
+const setDeleteCardHandle = (button, action) => {
   button.addEventListener(action, function (evt) {
     evt.target.closest('.card').remove()
   })
@@ -175,5 +175,5 @@ initialCards.forEach(card => {
 })
 
 // стартовые слушатели
-addOpenPopupHandler(buttonEditProfile, 'click', popupEditProfile) // На кнопку редактирования профиля
-addOpenPopupHandler(buttonAddCard, 'click', popupAddCard) // На кнопку добавления карточки
+setOpenPopupHandler(buttonEditProfile, 'click', popupEditProfile) // На кнопку редактирования профиля
+setOpenPopupHandler(buttonAddCard, 'click', popupAddCard) // На кнопку добавления карточки

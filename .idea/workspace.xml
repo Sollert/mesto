@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc4ab577-656f-45bf-a6b4-5a9a6a61954c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blocks/form/form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blocks/popup/_type/popup_type_card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/card/__image/card__image.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/__image/card__image.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/form/__element/form__element.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/form/__element/form__element.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/form/__fields/form__fields.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__caption/popup__caption.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__caption/popup__caption.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="fc4ab577-656f-45bf-a6b4-5a9a6a61954c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +53,7 @@
       <updated>1668242101359</updated>
       <workItem from="1668242106333" duration="29000" />
       <workItem from="1668242138532" duration="753000" />
-      <workItem from="1668417147003" duration="20215000" />
+      <workItem from="1668417147003" duration="20577000" />
     </task>
     <servers />
   </component>

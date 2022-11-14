@@ -58,8 +58,9 @@
 @import url("../blocks/popup/__caption/popup__caption.css");
 @import url("../blocks/popup/__title/popup__title.css");
 @import url("../blocks/popup/__close-button/popup__close-button.css");
+@import url("../blocks/popup/_type/popup_type_card.css");
 
 /* form */
+@import url("../blocks/form/form.css");
 @import url("../blocks/form/__element/form__element.css");
-@import url("../blocks/form/__fields/form__fields.css");
 @import url("../blocks/form/__save-button/form__save-button.css");

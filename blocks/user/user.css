@@ -1,14 +1,14 @@
 .user {
-  width: 486px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 486px;
 }
 
 @media screen and (max-width: 768px) {
   .user {
-    width: 282px;
     flex-direction: column;
     gap: 26px;
+    width: 282px;
   }
 }

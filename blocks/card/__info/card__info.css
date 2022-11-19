@@ -1,7 +1,7 @@
 .card__info {
-  margin: 20px auto 0;
-  width: 246px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 20px auto 0;
+  width: 246px;
 }

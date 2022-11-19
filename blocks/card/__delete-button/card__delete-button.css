@@ -2,13 +2,12 @@
   position: absolute;
   right: 20px;
   top: 20px;
-  padding: 0;
-  background-image: url(../../../images/card-delete-button.svg);
-  background-size: cover;
-  background-color: transparent;
   width: 18px;
   height: 19px;
+  padding: 0;
   border: none;
+  background: transparent url(../../../images/card-delete-button.svg);
+  background-size: cover;
   transition: opacity .3s ease;
   cursor: pointer;
 }

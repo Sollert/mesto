@@ -1,12 +1,12 @@
 .form__element {
-  margin: 0 0 30px;
-  padding: 0 0 9px;
   width: 358px;
   height: 27px;
-  box-sizing: border-box;
+  margin: 0 0 30px;
+  padding: 0 0 9px;
   border: none;
   outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
+  box-sizing: border-box;
 }
 
 .form__element:last-of-type {

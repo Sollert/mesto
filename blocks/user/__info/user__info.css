@@ -1,8 +1,8 @@
 .user__info {
   display: grid;
-  width: 336px;
   column-gap: 18px;
   row-gap: 5px;
+  width: 336px;
   grid-template-columns: 294px 1fr;
   align-content: center;
   align-items: center;
@@ -10,10 +10,10 @@
 
 @media screen and (max-width: 768px) {
   .user__info {
-    margin-left: 26px;
-    width: 217px;
     column-gap: 10px;
     row-gap: 6px;
+    width: 217px;
+    margin-left: 26px;
     grid-template-columns: 189px 1fr;
   }
 }

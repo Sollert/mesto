@@ -64,24 +64,15 @@ const cardPopup = document.querySelector(".popup_type_card");
 const cardPopupImage = cardPopup.querySelector(".popup__image");
 const cardPopupCaption = cardPopup.querySelector(".popup__caption");
 
-/* --- ОБЩИЕ ФУНКЦИИ --- */
-const setHandler = (button, action, method) => {
-	button.addEventListener(action, method);
-};
-
-const removeHandler = (button, action, method) => {
-	button.removeEventListener(action, method);
-};
-
 /* --- ПОПАПЫ --- */
 const openPopup = (popup) => {
 	popup.classList.add("popup_opened");
-	setHandler(popup, "click", closePopupHandler);
+	popup.addEventListener("click", closePopupHandler);
 };
 
 const closePopup = (popup) => {
 	popup.classList.remove("popup_opened");
-	removeHandler(popup, "click", closePopupHandler);
+	popup.removeEventListener("click", closePopupHandler);
 };
 
 const insertInfoInField = () => {
@@ -107,12 +98,12 @@ const insertCardInfo = (evt) => {
 const openEditProfilePopup = () => {
 	openPopup(popupEditProfile);
 	insertInfoInField();
-	setHandler(formEditProfile, "submit", submitFormEditProfile);
+	formEditProfile.addEventListener("submit", submitFormEditProfile);
 };
 
 const openAddCardPopup = () => {
 	openPopup(popupAddCard);
-	setHandler(formAddCard, "submit", submitFormAddCard);
+	formAddCard.addEventListener("submit", submitFormAddCard);
 };
 
 const openCardPopup = (evt) => {
@@ -144,7 +135,6 @@ const closePopupHandler = (evt) => {
 };
 
 /* --- СОЗДАНИЕ КАРТОЧКИ --- */
-
 const likeCard = (evt) => {
 	evt.target.classList.toggle("card__like-button_active");
 };
@@ -165,9 +155,9 @@ const createCard = (templateSelector, title, link) => {
 	cardImage.alt = title;
 	cardTitle.textContent = title;
 
-	setHandler(cardImage, "click", openCardPopup);
-	setHandler(likeButton, "click", likeCard);
-	setHandler(deleteButton, "click", deleteCard);
+	cardImage.addEventListener("click", openCardPopup);
+	likeButton.addEventListener("click", likeCard);
+	deleteButton.addEventListener("click", deleteCard);
 
 	return cardElement;
 };
@@ -184,5 +174,5 @@ initialCards.forEach((card) => {
 });
 
 /* --- ВЫЗОВ СТАРТОВЫХ СЛУШАТЕЛЕЙ --- */
-setHandler(buttonEditProfile, "click", openEditProfilePopup);
-setHandler(buttonAddCard, "click", openAddCardPopup);
+buttonEditProfile.addEventListener("click", openEditProfilePopup);
+buttonAddCard.addEventListener("click", openAddCardPopup);

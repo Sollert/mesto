@@ -1,19 +1,19 @@
 .user__info {
-  display: grid;
-  column-gap: 18px;
-  row-gap: 5px;
-  width: 336px;
-  grid-template-columns: 294px 1fr;
-  align-content: center;
-  align-items: center;
+	display: grid;
+	column-gap: 18px;
+	row-gap: 5px;
+	width: 336px;
+	grid-template-columns: 294px 1fr;
+	align-content: center;
+	align-items: center;
 }
 
 @media screen and (max-width: 768px) {
-  .user__info {
-    column-gap: 10px;
-    row-gap: 6px;
-    width: 217px;
-    margin-left: 26px;
-    grid-template-columns: 189px 1fr;
-  }
+	.user__info {
+		column-gap: 10px;
+		row-gap: 6px;
+		width: 217px;
+		margin-left: 26px;
+		grid-template-columns: 189px 1fr;
+	}
 }

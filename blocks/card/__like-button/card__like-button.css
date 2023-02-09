@@ -1,13 +1,13 @@
 .card__like-button {
-  width: 22px;
-  height: 19px;
-  padding: 0;
-  border: none;
-  background: transparent url(../../../images/like.svg) no-repeat center;
-  transition: opacity .3s ease;
-  cursor: pointer;
+	width: 22px;
+	height: 19px;
+	padding: 0;
+	border: none;
+	background: transparent url(../../../images/like.svg) no-repeat center;
+	transition: opacity 0.3s ease;
+	cursor: pointer;
 }
 
 .card__like-button:not(.card__like-button_active):hover {
-  opacity: .5;
+	opacity: 0.5;
 }

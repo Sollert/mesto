@@ -1,19 +1,19 @@
 .user__name {
-  margin: 0;
-  max-width: 13ch;
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 48px;
-  color: #fff;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+	margin: 0;
+	max-width: 13ch;
+	font-weight: 500;
+	font-size: 42px;
+	line-height: 48px;
+	color: #fff;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 768px){
-  .user__name {
-    font-size: 27px;
-    line-height: 33px;
-    text-align: center;
-  }
+@media screen and (max-width: 768px) {
+	.user__name {
+		font-size: 27px;
+		line-height: 33px;
+		text-align: center;
+	}
 }

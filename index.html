@@ -1,85 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
-</head>
-<body class="page">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mesto</title>
+		<link rel="stylesheet" href="./pages/index.css" />
+	</head>
 
-  <header class="header page__header">
-    <a href="#" class="logo header__logo"></a>
-  </header>
+	<body class="page">
+		<header class="header page__header">
+			<a href="#" class="logo header__logo"></a>
+		</header>
 
-  <main class="main page__main">
-    <section class="profile">
-      <div class="user">
-        <img src="./images/avatar.jpg" alt="Аватар" class="user__avatar" draggable="false">
-        <div class="user__info">
-          <h1 class="user__name">Жак-Ив Кусто</h1>
-          <button class="user__edit-button" type="button" aria-label="Отредактировать"></button>
-          <p class="user__status">Исследователь океана</p>
-        </div>
-      </div>
-      <button class="add-card-button" type="button" aria-label="Добавить место"></button>
-    </section>
-    <section class="cards" aria-label="Карточки">
-    </section>
-  </main>
+		<main class="main page__main">
+			<section class="profile">
+				<div class="user">
+					<img
+						src="./images/avatar.jpg"
+						alt="Аватар"
+						class="user__avatar"
+						draggable="false"
+					/>
+					<div class="user__info">
+						<h1 class="user__name">Жак-Ив Кусто</h1>
+						<button
+							class="user__edit-button"
+							type="button"
+							aria-label="Отредактировать"
+						></button>
+						<p class="user__status">Исследователь океана</p>
+					</div>
+				</div>
+				<button
+					class="add-card-button"
+					type="button"
+					aria-label="Добавить место"
+				></button>
+			</section>
+			<section class="cards" aria-label="Карточки"></section>
+		</main>
 
-  <footer class="footer page__footer">
-    <h2 class="footer__copyright">©&nbsp;2022 Mesto Russia</h2>
-  </footer>
+		<footer class="footer page__footer">
+			<h2 class="footer__copyright">©&nbsp;2022 Mesto Russia</h2>
+		</footer>
 
-  <div class="popup page__popup popup_type_profile">
-    <div class="popup__container">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form" name="edit-profile">
-          <input type="text" class="form__element form__element_type_user-name" name="userName"
-                 placeholder="Введите имя" required>
-          <input type="text" class="form__element form__element_type_user-status" name="userStatus"
-                 placeholder="Введите статус" required>
-        <button type="submit" class="form__save-button">Сохранить</button>
-      </form>
-      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
-    </div>
-  </div>
+		<div class="popup page__popup popup_type_profile">
+			<div class="popup__container">
+				<h2 class="popup__title">Редактировать профиль</h2>
+				<form class="form" name="edit-profile">
+					<input
+						type="text"
+						class="form__element form__element_type_user-name"
+						name="userName"
+						placeholder="Введите имя"
+						required
+					/>
+					<input
+						type="text"
+						class="form__element form__element_type_user-status"
+						name="userStatus"
+						placeholder="Введите статус"
+						required
+					/>
+					<button type="submit" class="form__save-button">Сохранить</button>
+				</form>
+				<button
+					type="button"
+					class="popup__close-button"
+					aria-label="Закрыть"
+				></button>
+			</div>
+		</div>
 
-  <div class="popup page__popup popup_type_add-card">
-    <div class="popup__container">
-      <h2 class="popup__title">Новое место</h2>
-      <form class="form" name="edit-profile">
-          <input type="text" class="form__element form__element_type_card-title" name="cardTitle"
-                 placeholder="Название" required>
-          <input type="text" class="form__element form__element_type_card-image" name="cardImage"
-                 placeholder="Ссылка на картинку" required>
-        <button type="submit" class="form__save-button">Создать</button>
-      </form>
-      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
-    </div>
-  </div>
+		<div class="popup page__popup popup_type_add-card">
+			<div class="popup__container">
+				<h2 class="popup__title">Новое место</h2>
+				<form class="form" name="edit-profile">
+					<input
+						type="text"
+						class="form__element form__element_type_card-title"
+						name="cardTitle"
+						placeholder="Название"
+						required
+					/>
+					<input
+						type="text"
+						class="form__element form__element_type_card-image"
+						name="cardImage"
+						placeholder="Ссылка на картинку"
+						required
+					/>
+					<button type="submit" class="form__save-button">Создать</button>
+				</form>
+				<button
+					type="button"
+					class="popup__close-button"
+					aria-label="Закрыть"
+				></button>
+			</div>
+		</div>
 
-  <div class="popup page__popup popup_type_card">
-    <div class="popup__card-container">
-      <img class="popup__image" src="#" alt="" draggable="false">
-      <p class="popup__caption"></p>
-      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
-    </div>
-  </div>
+		<div class="popup page__popup popup_type_card">
+			<div class="popup__card-container">
+				<img class="popup__image" src="#" alt="" draggable="false" />
+				<p class="popup__caption"></p>
+				<button
+					type="button"
+					class="popup__close-button"
+					aria-label="Закрыть"
+				></button>
+			</div>
+		</div>
 
-  <template class="card-template">
-    <article class="card">
-      <img class="card__image" src="#" alt="" draggable="false">
-      <div class="card__info">
-        <h2 class="card__title"></h2>
-        <button class="card__like-button" type="button" aria-label="Нравится"></button>
-      </div>
-      <button class="card__delete-button" type="button" aria-label="Удалить"></button>
-    </article>
-  </template>
+		<template class="card-template">
+			<article class="card">
+				<img class="card__image" src="#" alt="" draggable="false" />
+				<div class="card__info">
+					<h2 class="card__title"></h2>
+					<button
+						class="card__like-button"
+						type="button"
+						aria-label="Нравится"
+					></button>
+				</div>
+				<button
+					class="card__delete-button"
+					type="button"
+					aria-label="Удалить"
+				></button>
+			</article>
+		</template>
 
-  <script src="./pages/index.js"></script>
-</body>
+		<script src="./pages/index.js"></script>
+	</body>
 </html>

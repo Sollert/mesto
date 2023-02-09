@@ -1,8 +1,8 @@
 .card {
-  position: relative;
-  width: 282px;
-  padding: 0 0 28px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  background: #fff;
+	position: relative;
+	width: 282px;
+	padding: 0 0 28px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	background: #fff;
 }

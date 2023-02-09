@@ -25,44 +25,44 @@ const initialCards = [
 		link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
 	},
 ];
-const cardsContainer = document.querySelector(".cards"); // Контейнер для карточек
+const cardsContainer = document.querySelector(".cards");
 
 // Блок профиля
-const profile = document.querySelector(".profile"); // Профиль
-const userName = profile.querySelector(".user__name"); // Имя юзера
-const userStatus = profile.querySelector(".user__status"); // Статус юзера
+const profile = document.querySelector(".profile");
+const userName = profile.querySelector(".user__name");
+const userStatus = profile.querySelector(".user__status");
 
 // Кнопки для открытия попапов
-const buttonAddCard = document.querySelector(".add-card-button"); // Для добавления карточки
-const buttonEditProfile = document.querySelector(".user__edit-button"); // Для редактирования профиля
+const buttonAddCard = document.querySelector(".add-card-button");
+const buttonEditProfile = document.querySelector(".user__edit-button");
 
 // Попапы
 const popups = document.querySelectorAll(".popup");
 
 // Попап редактирования профиля
-const popupEditProfile = document.querySelector(".popup_type_profile"); // Сам попап
-const formEditProfile = popupEditProfile.querySelector(".form"); // Форма редактирования профиля
+const popupEditProfile = document.querySelector(".popup_type_profile");
+const formEditProfile = popupEditProfile.querySelector(".form");
 const userNameField = formEditProfile.querySelector(
 	".form__element_type_user-name"
-); // Поле имени
+);
 const userStatusField = formEditProfile.querySelector(
 	".form__element_type_user-status"
-); // Поле статуса
+);
 
 // Попап добавления карточки
-const popupAddCard = document.querySelector(".popup_type_add-card"); // Сам попап
-const formAddCard = popupAddCard.querySelector(".form"); // Форма добавления карточки
+const popupAddCard = document.querySelector(".popup_type_add-card");
+const formAddCard = popupAddCard.querySelector(".form");
 const cardTitleField = formAddCard.querySelector(
 	".form__element_type_card-title"
-); // Поле названия карточки
+);
 const cardImageField = formAddCard.querySelector(
 	".form__element_type_card-image"
-); // Поле изображения карточки
+);
 
 // Попап карточки
-const cardPopup = document.querySelector(".popup_type_card"); // Сам попап
-const cardPopupImage = cardPopup.querySelector(".popup__image"); // Изображение
-const cardPopupCaption = cardPopup.querySelector(".popup__caption"); // Подпись
+const cardPopup = document.querySelector(".popup_type_card");
+const cardPopupImage = cardPopup.querySelector(".popup__image");
+const cardPopupCaption = cardPopup.querySelector(".popup__caption");
 
 /* --- ОБЩИЕ ФУНКЦИИ --- */
 const setHandler = (button, action, method) => {
@@ -81,7 +81,7 @@ const openPopup = (popup) => {
 
 const closePopup = (popup) => {
 	popup.classList.remove("popup_opened");
-	removeHandler(popup, "click", closePopupHandler); // Убрать слушатель закрытия попапа
+	removeHandler(popup, "click", closePopupHandler);
 };
 
 const insertInfoInField = () => {

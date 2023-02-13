@@ -68,11 +68,13 @@ const cardPopupCaption = cardPopup.querySelector(".popup__caption");
 const openPopup = (popup) => {
 	popup.classList.add("popup_opened");
 	popup.addEventListener("click", closePopupHandler);
+	document.addEventListener("keydown", closePopupHandler);
 };
 
 const closePopup = (popup) => {
 	popup.classList.remove("popup_opened");
 	popup.removeEventListener("click", closePopupHandler);
+	document.removeEventListener("keydown", closePopupHandler);
 };
 
 const insertInfoInField = () => {
@@ -131,6 +133,10 @@ const submitFormAddCard = (evt) => {
 const closePopupHandler = (evt) => {
 	if (evt.target.classList.contains("popup__close-button")) {
 		closePopup(evt.target.closest(".popup"));
+	} else if (evt.target.classList.contains("popup")) {
+		closePopup(evt.target.closest(".popup"));
+	} else if (evt.key === "Escape") {
+		closePopup(document.querySelector(".popup_opened"));
 	}
 };
 

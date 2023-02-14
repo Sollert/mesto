@@ -41,23 +41,15 @@ const popups = document.querySelectorAll(".popup");
 
 // Попап редактирования профиля
 const popupEditProfile = document.querySelector(".popup_type_profile");
-const formEditProfile = popupEditProfile.querySelector(".form");
-const userNameField = formEditProfile.querySelector(
-	".form__element_type_user-name"
-);
-const userStatusField = formEditProfile.querySelector(
-	".form__element_type_user-status"
-);
+const formEditProfile = document.forms.editProfile;
+const userNameField = editProfile.elements.userName;
+const userStatusField = editProfile.elements.userStatus;
 
 // Попап добавления карточки
 const popupAddCard = document.querySelector(".popup_type_add-card");
-const formAddCard = popupAddCard.querySelector(".form");
-const cardTitleField = formAddCard.querySelector(
-	".form__element_type_card-title"
-);
-const cardImageField = formAddCard.querySelector(
-	".form__element_type_card-image"
-);
+const formAddCard = document.forms.addCard;
+const cardTitleField = addCard.elements.cardTitle;
+const cardImageField = addCard.elements.cardImage;
 
 // Попап карточки
 const cardPopup = document.querySelector(".popup_type_card");
@@ -85,10 +77,6 @@ const insertInfoInField = () => {
 const insertUserInfoFromField = () => {
 	userName.textContent = userNameField.value;
 	userStatus.textContent = userStatusField.value;
-};
-
-const wipeFormField = (field) => {
-	field.value = "";
 };
 
 const insertCardInfo = (evt) => {
@@ -126,8 +114,7 @@ const submitFormAddCard = (evt) => {
 		cardsContainer,
 		createCard(".card-template", cardTitleField.value, cardImageField.value)
 	);
-	wipeFormField(cardTitleField);
-	wipeFormField(cardImageField);
+	formAddCard.reset();
 };
 
 const closePopupHandler = (evt) => {

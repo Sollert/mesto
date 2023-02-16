@@ -48,20 +48,28 @@
 			<div class="popup__container">
 				<h2 class="popup__title">Редактировать профиль</h2>
 				<form class="form" name="editProfile">
-					<input
-						type="text"
-						class="form__element"
-						name="userName"
-						placeholder="Введите имя"
-						required
-					/>
-					<input
-						type="text"
-						class="form__element"
-						name="userStatus"
-						placeholder="Введите статус"
-						required
-					/>
+					<label class="form__label">
+						<input
+							type="text"
+							class="form__element"
+							name="userName"
+							placeholder="Введите имя"
+							minlength="2"
+							maxlength="40"
+							required
+						/>
+					</label>
+					<label class="form__label">
+						<input
+							type="text"
+							class="form__element"
+							name="userStatus"
+							placeholder="Введите статус"
+							minlength="2"
+							maxlength="200"
+							required
+						/>
+					</label>
 					<button type="submit" class="form__save-button">Сохранить</button>
 				</form>
 				<button
@@ -76,20 +84,24 @@
 			<div class="popup__container">
 				<h2 class="popup__title">Новое место</h2>
 				<form class="form" name="addCard">
-					<input
-						type="text"
-						class="form__element"
-						name="cardTitle"
-						placeholder="Название"
-						required
-					/>
-					<input
-						type="text"
-						class="form__element"
-						name="cardImage"
-						placeholder="Ссылка на картинку"
-						required
-					/>
+					<label class="form__label">
+						<input
+							type="text"
+							class="form__element"
+							name="cardTitle"
+							placeholder="Название"
+							required
+						/>
+					</label>
+					<label class="form__label">
+						<input
+							type="url"
+							class="form__element"
+							name="cardImage"
+							placeholder="Ссылка на картинку"
+							required
+						/>
+					</label>
 					<button type="submit" class="form__save-button">Создать</button>
 				</form>
 				<button

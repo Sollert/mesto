@@ -69,17 +69,17 @@ const closePopup = (popup) => {
 	document.removeEventListener("keydown", closePopupHandler);
 };
 
-const insertInfoInField = () => {
+const fillProfileForm = () => {
 	userNameField.value = userName.textContent;
 	userStatusField.value = userStatus.textContent;
 };
 
-const insertUserInfoFromField = () => {
+const changeUserInfo = () => {
 	userName.textContent = userNameField.value;
 	userStatus.textContent = userStatusField.value;
 };
 
-const insertCardInfo = (evt) => {
+const fillCardPopupInfo = (evt) => {
 	cardPopupImage.src = evt.target.src;
 	cardPopupImage.alt = evt.target.alt;
 	cardPopupCaption.textContent = evt.target.alt;
@@ -87,7 +87,7 @@ const insertCardInfo = (evt) => {
 
 const openEditProfilePopup = () => {
 	openPopup(popupEditProfile);
-	insertInfoInField();
+	fillProfileForm();
 	formEditProfile.addEventListener("submit", submitFormEditProfile);
 };
 
@@ -98,13 +98,13 @@ const openAddCardPopup = () => {
 
 const openCardPopup = (evt) => {
 	openPopup(cardPopup);
-	insertCardInfo(evt);
+	fillCardPopupInfo(evt);
 };
 
 const submitFormEditProfile = (evt) => {
 	evt.preventDefault();
 	closePopup(popupEditProfile);
-	insertUserInfoFromField();
+	changeUserInfo();
 };
 
 const submitFormAddCard = (evt) => {

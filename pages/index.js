@@ -232,6 +232,12 @@ const toggleButtonState = (
 };
 
 const isValid = (formElement, inputElement, inputErrorClass, errorClass) => {
+	if (inputElement.validity.patternMismatch) {
+		inputElement.setCustomValidity(inputElement.dataset.errorMessage);
+	} else {
+		inputElement.setCustomValidity("");
+	}
+
 	if (!inputElement.validity.valid) {
 		showInputError(
 			formElement,

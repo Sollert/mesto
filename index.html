@@ -57,6 +57,8 @@
 							placeholder="Введите имя"
 							minlength="2"
 							maxlength="40"
+							pattern="[a-zA-Zа-яА-ЯёЁ\s\-]+"
+							data-error-message="Поле может содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
 							required
 						/>
 						<span class="user-name-input-error form__input-error"></span>
@@ -70,6 +72,8 @@
 							placeholder="Введите статус"
 							minlength="2"
 							maxlength="200"
+							pattern="[a-zA-Zа-яА-ЯёЁ\s\-]+"
+							data-error-message="Поле может содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
 							required
 						/>
 						<span class="user-status-input-error form__input-error"></span>
@@ -97,6 +101,8 @@
 							placeholder="Название"
 							minlength="2"
 							maxlength="30"
+							pattern="[a-zA-Zа-яА-ЯёЁ\s\-]+"
+							data-error-message="Поле может содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
 							required
 						/>
 						<span class="card-title-input-error form__input-error"></span>

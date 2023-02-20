@@ -262,13 +262,13 @@ const setEventListeners = (
 	}
 ) => {
 	const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+	toggleButtonState(
+		formElement,
+		inputList,
+		inactiveButtonClass,
+		submitButtonSelector
+	);
 	inputList.forEach((inputElement) => {
-		toggleButtonState(
-			formElement,
-			inputList,
-			inactiveButtonClass,
-			submitButtonSelector
-		);
 		inputElement.addEventListener("input", () => {
 			isValid(formElement, inputElement, inputErrorClass, errorClass);
 			toggleButtonState(

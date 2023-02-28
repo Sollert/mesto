@@ -18,7 +18,7 @@ import {
 	cardPopupImage,
 	cardPopupCaption,
 } from "./constants.js";
-import { enableValidation, resetValidation } from "./validate.js";
+import { enableValidation, resetValidation } from "../validate.js";
 import { createCard, renderElement } from "./card.js";
 import { openPopup, closePopup, openCardPopup } from "./modal.js";
 import "../pages/index.css";

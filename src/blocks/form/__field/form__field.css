@@ -1,14 +1,15 @@
 .form__field {
-	display: block;
-	margin: 0 0 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }
 
 .form__field:last-of-type {
-	margin: 0 0 48px;
+	margin-bottom: 18px;
 }
 
 @media screen and (max-width: 768px) {
 	.form__field:last-of-type {
-		margin: 0 0 45px;
+		margin-bottom: 0;
 	}
 }

@@ -14,9 +14,6 @@ import {
 	formAddCard,
 	cardTitleField,
 	cardImageField,
-	cardPopup,
-	cardPopupImage,
-	cardPopupCaption,
 } from "./constants.js";
 import { enableValidation, resetValidation } from "./validate.js";
 import { createCard, renderElement } from "./card.js";
@@ -34,17 +31,15 @@ const changeUserInfo = () => {
 };
 
 const openEditProfilePopup = () => {
-	openPopup(popupEditProfile);
 	fillProfileForm();
 	resetValidation(formEditProfile, validationConfig);
-	formEditProfile.addEventListener("submit", submitFormEditProfile);
+	openPopup(popupEditProfile);
 };
 
 const openAddCardPopup = () => {
-	openPopup(popupAddCard);
 	resetValidation(formAddCard, validationConfig);
-	formAddCard.addEventListener("submit", submitFormAddCard);
 	formAddCard.reset();
+	openPopup(popupAddCard);
 };
 
 const submitFormEditProfile = (evt) => {
@@ -60,6 +55,7 @@ const submitFormAddCard = (evt) => {
 		cardsContainer,
 		createCard(
 			".card-template",
+			".card",
 			cardTitleField.value,
 			cardImageField.value,
 			openCardPopup
@@ -72,13 +68,15 @@ const submitFormAddCard = (evt) => {
 initialCards.forEach((card) => {
 	renderElement(
 		cardsContainer,
-		createCard(".card-template", card.name, card.link, openCardPopup)
+		createCard(".card-template", ".card", card.name, card.link, openCardPopup)
 	);
 });
 
 /* - Вызов стартовых слушателей - */
 buttonEditProfile.addEventListener("click", openEditProfilePopup);
 buttonAddCard.addEventListener("click", openAddCardPopup);
+formAddCard.addEventListener("submit", submitFormAddCard);
+formEditProfile.addEventListener("submit", submitFormEditProfile);
 
 /* - Валидация - */
 enableValidation(validationConfig);

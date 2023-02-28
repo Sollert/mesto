@@ -1,4 +1,7 @@
 .card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	position: relative;
 	width: 282px;
 	padding: 0 0 28px;

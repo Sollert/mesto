@@ -29,6 +29,16 @@ const hasInvalidInput = (inputList) => {
 	});
 };
 
+export const disableButton = (buttonElement, inactiveButtonClass) => {
+	buttonElement.disabled = true;
+	buttonElement.classList.add(inactiveButtonClass);
+};
+
+const enableButton = (buttonElement, inactiveButtonClass) => {
+	buttonElement.disabled = false;
+	buttonElement.classList.remove(inactiveButtonClass);
+};
+
 const toggleButtonState = (
 	formElement,
 	inputList,
@@ -38,11 +48,9 @@ const toggleButtonState = (
 	const buttonElement = formElement.querySelector(submitButtonSelector);
 
 	if (hasInvalidInput(inputList)) {
-		buttonElement.disabled = true;
-		buttonElement.classList.add(inactiveButtonClass);
+		disableButton(buttonElement, inactiveButtonClass);
 	} else {
-		buttonElement.disabled = false;
-		buttonElement.classList.remove(inactiveButtonClass);
+		enableButton(buttonElement, inactiveButtonClass);
 	}
 };
 
@@ -105,10 +113,12 @@ export const enableValidation = ({ formSelector, ...rest }) => {
 
 export const resetValidation = (
 	formElement,
-	{ inputErrorClass, errorClass }
+	{ submitButtonSelector, inputErrorClass, inactiveButtonClass, errorClass }
 ) => {
 	const inputList = Array.from(formElement.querySelectorAll(".form__input"));
+	const buttonElement = formElement.querySelector(submitButtonSelector);
 	inputList.forEach((inputElement) => {
 		hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+		disableButton(buttonElement, inactiveButtonClass);
 	});
 };

@@ -8,11 +8,12 @@ const deleteCard = (evt) => {
 
 export const createCard = (
 	templateSelector,
+	cardSelector,
 	title,
 	link,
 	handlePictureClick
 ) => {
-	const cardTemplate = document.querySelector(templateSelector).content;
+	const cardTemplate = document.querySelector(templateSelector).content.querySelector(cardSelector);
 	const cardElement = cardTemplate.cloneNode(true);
 	const cardImage = cardElement.querySelector(".card__image");
 	const cardTitle = cardElement.querySelector(".card__title");

@@ -21,6 +21,7 @@ import {
 import { enableValidation, resetValidation } from "./validate.js";
 import { createCard, renderElement } from "./card.js";
 import { openPopup, closePopup, openCardPopup } from "./modal.js";
+import "../pages/index.css";
 
 const fillProfileForm = () => {
 	userNameField.value = userName.textContent;

@@ -19,8 +19,8 @@ const fillCardPopupInfo = (evt, image, caption) => {
 };
 
 export const openCardPopup = (evt) => {
-	openPopup(cardPopup);
 	fillCardPopupInfo(evt, cardPopupImage, cardPopupCaption);
+	openPopup(cardPopup);
 };
 
 const closePopupHandler = (evt) => {

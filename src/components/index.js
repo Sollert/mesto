@@ -60,6 +60,7 @@ const submitFormAddCard = (evt) => {
 		cardsContainer,
 		createCard(
 			".card-template",
+			".card",
 			cardTitleField.value,
 			cardImageField.value,
 			openCardPopup
@@ -72,7 +73,7 @@ const submitFormAddCard = (evt) => {
 initialCards.forEach((card) => {
 	renderElement(
 		cardsContainer,
-		createCard(".card-template", card.name, card.link, openCardPopup)
+		createCard(".card-template", ".card", card.name, card.link, openCardPopup)
 	);
 });
 

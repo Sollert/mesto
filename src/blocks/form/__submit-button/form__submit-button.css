@@ -1,4 +1,4 @@
-.form__save-button {
+.form__submit-button {
 	width: 358px;
 	height: 50px;
 	padding: 0;
@@ -13,13 +13,13 @@
 	transition: opacity 0.3s ease;
 }
 
-.form__save-button:hover {
+.form__submit-button:hover {
 	opacity: 0.8;
 	cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-	.form__save-button {
+	.form__submit-button {
 		width: 238px;
 		height: 46px;
 		font-size: 14px;

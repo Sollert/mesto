@@ -4,7 +4,6 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Mesto</title>
-		<link rel="stylesheet" href="./pages/index.css" />
 	</head>
 
 	<body class="page">
@@ -16,7 +15,7 @@
 			<section class="profile">
 				<div class="user">
 					<img
-						src="./images/avatar.jpg"
+						src="<%=require('./images/avatar.jpg')%>"
 						alt="Аватар"
 						class="user__avatar"
 						draggable="false"
@@ -47,22 +46,38 @@
 		<div class="popup page__popup popup_type_profile">
 			<div class="popup__container">
 				<h2 class="popup__title">Редактировать профиль</h2>
-				<form class="form" name="edit-profile">
-					<input
-						type="text"
-						class="form__element form__element_type_user-name"
-						name="userName"
-						placeholder="Введите имя"
-						required
-					/>
-					<input
-						type="text"
-						class="form__element form__element_type_user-status"
-						name="userStatus"
-						placeholder="Введите статус"
-						required
-					/>
-					<button type="submit" class="form__save-button">Сохранить</button>
+				<form class="form" name="editProfile" novalidate>
+					<label class="form__field">
+						<input
+							id="user-name-input"
+							type="text"
+							class="form__input"
+							name="userName"
+							placeholder="Введите имя"
+							minlength="2"
+							maxlength="40"
+							pattern="[a-zA-Zа-яА-ЯёЁ\s\-]+"
+							data-error-message="Поле может содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
+							required
+						/>
+						<span class="user-name-input-error form__input-error"></span>
+					</label>
+					<label class="form__field">
+						<input
+							id="user-status-input"
+							type="text"
+							class="form__input"
+							name="userStatus"
+							placeholder="Введите статус"
+							minlength="2"
+							maxlength="200"
+							pattern="[a-zA-Zа-яА-ЯёЁ\s\-]+"
+							data-error-message="Поле может содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
+							required
+						/>
+						<span class="user-status-input-error form__input-error"></span>
+					</label>
+					<button type="submit" class="form__submit-button">Сохранить</button>
 				</form>
 				<button
 					type="button"
@@ -75,22 +90,34 @@
 		<div class="popup page__popup popup_type_add-card">
 			<div class="popup__container">
 				<h2 class="popup__title">Новое место</h2>
-				<form class="form" name="edit-profile">
-					<input
-						type="text"
-						class="form__element form__element_type_card-title"
-						name="cardTitle"
-						placeholder="Название"
-						required
-					/>
-					<input
-						type="text"
-						class="form__element form__element_type_card-image"
-						name="cardImage"
-						placeholder="Ссылка на картинку"
-						required
-					/>
-					<button type="submit" class="form__save-button">Создать</button>
+				<form class="form" name="addCard" novalidate>
+					<label class="form__field">
+						<input
+							id="card-title-input"
+							type="text"
+							class="form__input"
+							name="cardTitle"
+							placeholder="Название"
+							minlength="2"
+							maxlength="30"
+							pattern="[a-zA-Zа-яА-ЯёЁ\s\-]+"
+							data-error-message="Поле может содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
+							required
+						/>
+						<span class="card-title-input-error form__input-error"></span>
+					</label>
+					<label class="form__field">
+						<input
+							id="card-image-input"
+							type="url"
+							class="form__input"
+							name="cardImage"
+							placeholder="Ссылка на картинку"
+							required
+						/>
+						<span class="card-image-input-error form__input-error"></span>
+					</label>
+					<button type="submit" class="form__submit-button">Создать</button>
 				</form>
 				<button
 					type="button"
@@ -130,7 +157,5 @@
 				></button>
 			</article>
 		</template>
-
-		<script src="./pages/index.js"></script>
 	</body>
 </html>

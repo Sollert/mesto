@@ -37,12 +37,16 @@ export const cardsContainer = document.querySelector(".cards");
 
 // Блок профиля
 const profile = document.querySelector(".profile");
+export const userAvatar = profile.querySelector(".user__avatar");
 export const userName = profile.querySelector(".user__name");
 export const userStatus = profile.querySelector(".user__status");
 
 // Кнопки для открытия попапов
 export const buttonAddCard = document.querySelector(".add-card-button");
 export const buttonEditProfile = document.querySelector(".user__edit-button");
+export const buttonEditUserAvatar = document.querySelector(
+	".user__avatar-overlay"
+);
 
 // Попап редактирования профиля
 export const popupEditProfile = document.querySelector(".popup_type_profile");
@@ -60,6 +64,13 @@ export const cardImageField = addCard.elements.cardImage;
 export const cardPopup = document.querySelector(".popup_type_card");
 export const cardPopupImage = cardPopup.querySelector(".popup__image");
 export const cardPopupCaption = cardPopup.querySelector(".popup__caption");
+
+// Попап аватара
+export const popupEditUserAvatar = document.querySelector(
+	".popup_type_edit-user-avatar"
+);
+export const formEditUserAvatar = document.forms.editUserAvatar;
+export const userAvatarImageFiled = formEditUserAvatar.elements.userAvatarLink;
 
 // API
 export const cohortId = "plus-cohort-20";

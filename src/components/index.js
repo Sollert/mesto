@@ -2,6 +2,7 @@ import {
 	validationConfig,
 	initialCards,
 	cardsContainer,
+	userAvatar,
 	userName,
 	userStatus,
 	buttonAddCard,
@@ -14,6 +15,10 @@ import {
 	formAddCard,
 	cardTitleField,
 	cardImageField,
+	popupEditUserAvatar,
+	formEditUserAvatar,
+	userAvatarImageFiled,
+	buttonEditUserAvatar,
 } from "./constants.js";
 import { enableValidation, resetValidation } from "./validate.js";
 import { createCard, renderElement } from "./card.js";
@@ -30,6 +35,10 @@ const changeUserInfo = () => {
 	userStatus.textContent = userStatusField.value;
 };
 
+const changeUserAvatar = () => {
+	userAvatar.src = userAvatarImageFiled.value;
+};
+
 const openEditProfilePopup = () => {
 	fillProfileForm();
 	resetValidation(formEditProfile, validationConfig);
@@ -40,6 +49,12 @@ const openAddCardPopup = () => {
 	resetValidation(formAddCard, validationConfig);
 	formAddCard.reset();
 	openPopup(popupAddCard);
+};
+
+const openEditUserAvatarPopup = () => {
+	resetValidation(formEditUserAvatar, validationConfig);
+	formEditUserAvatar.reset();
+	openPopup(popupEditUserAvatar);
 };
 
 const submitFormEditProfile = (evt) => {
@@ -64,6 +79,12 @@ const submitFormAddCard = (evt) => {
 	formAddCard.reset();
 };
 
+const submitFormEditUserAvatar = (evt) => {
+	evt.preventDefault();
+	closePopup(popupEditUserAvatar);
+	changeUserAvatar();
+};
+
 /* - Стартовые карточки - */
 initialCards.forEach((card) => {
 	renderElement(
@@ -75,18 +96,10 @@ initialCards.forEach((card) => {
 /* - Вызов стартовых слушателей - */
 buttonEditProfile.addEventListener("click", openEditProfilePopup);
 buttonAddCard.addEventListener("click", openAddCardPopup);
+buttonEditUserAvatar.addEventListener("click", openEditUserAvatarPopup);
 formAddCard.addEventListener("submit", submitFormAddCard);
 formEditProfile.addEventListener("submit", submitFormEditProfile);
+formEditUserAvatar.addEventListener("submit", submitFormEditUserAvatar);
 
 /* - Валидация - */
 enableValidation(validationConfig);
-
-fetch("https://nomoreparties.co/v1/plus-cohort-20/users/me", {
-	headers: {
-		authorization: "683f3065-4a13-441a-ad8e-6cb61f200f4c",
-	},
-})
-	.then((res) => res.json())
-	.then((result) => {
-		console.log(result);
-	});

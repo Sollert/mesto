@@ -80,3 +80,13 @@ formEditProfile.addEventListener("submit", submitFormEditProfile);
 
 /* - Валидация - */
 enableValidation(validationConfig);
+
+fetch("https://nomoreparties.co/v1/plus-cohort-20/users/me", {
+	headers: {
+		authorization: "683f3065-4a13-441a-ad8e-6cb61f200f4c",
+	},
+})
+	.then((res) => res.json())
+	.then((result) => {
+		console.log(result);
+	});

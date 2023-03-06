@@ -60,3 +60,7 @@ export const cardImageField = addCard.elements.cardImage;
 export const cardPopup = document.querySelector(".popup_type_card");
 export const cardPopupImage = cardPopup.querySelector(".popup__image");
 export const cardPopupCaption = cardPopup.querySelector(".popup__caption");
+
+// API
+export const cohortId = "plus-cohort-20";
+export const token = "683f3065-4a13-441a-ad8e-6cb61f200f4c";

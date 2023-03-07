@@ -14,20 +14,17 @@
 		<main class="main page__main">
 			<section class="profile">
 				<div class="user">
-					<img
-						src="<%=require('./images/avatar.jpg')%>"
-						alt="Аватар"
-						class="user__avatar"
-						draggable="false"
-					/>
+					<div class="user__avatar-overlay">
+						<img alt="Аватар" class="user__avatar" draggable="false" />
+					</div>
 					<div class="user__info">
-						<h1 class="user__name">Жак-Ив Кусто</h1>
+						<h1 class="user__name"></h1>
 						<button
 							class="user__edit-button"
 							type="button"
 							aria-label="Отредактировать"
 						></button>
-						<p class="user__status">Исследователь океана</p>
+						<p class="user__status"></p>
 					</div>
 				</div>
 				<button
@@ -40,7 +37,7 @@
 		</main>
 
 		<footer class="footer page__footer">
-			<h2 class="footer__copyright">©&nbsp;2022 Mesto Russia</h2>
+			<h2 class="footer__copyright">©&nbsp;2023 Mesto Russia</h2>
 		</footer>
 
 		<div class="popup page__popup popup_type_profile">
@@ -139,16 +136,47 @@
 			</div>
 		</div>
 
+		<div class="popup page__popup popup_type_edit-user-avatar">
+			<div class="popup__container">
+				<h2 class="popup__title">Обновить аватар</h2>
+				<form class="form" name="editUserAvatar" novalidate>
+					<label class="form__field">
+						<input
+							type="url"
+							class="form__input"
+							name="userAvatarLink"
+							id="user-avatar-link"
+							placeholder="Ссылка на изображение"
+							required
+						/>
+						<span
+							id="error-user-avatar-link"
+							class="user-avatar-link-error form__input-error"
+						></span>
+					</label>
+					<button type="submit" class="form__submit-button">Сохранить</button>
+				</form>
+				<button
+					type="button"
+					class="popup__close-button"
+					aria-label="Закрыть"
+				></button>
+			</div>
+		</div>
+
 		<template class="card-template">
 			<article class="card">
 				<img class="card__image" src="#" alt="" draggable="false" />
 				<div class="card__info">
 					<h2 class="card__title"></h2>
-					<button
-						class="card__like-button"
-						type="button"
-						aria-label="Нравится"
-					></button>
+					<div class="card__like-container">
+						<button
+							class="card__like-button"
+							type="button"
+							aria-label="Нравится"
+						></button>
+						<span class="card__like-counter"></span>
+					</div>
 				</div>
 				<button
 					class="card__delete-button"

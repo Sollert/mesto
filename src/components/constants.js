@@ -17,22 +17,28 @@ export const userStatus = profile.querySelector(".user__status");
 
 // Кнопки для открытия попапов
 export const buttonAddCard = document.querySelector(".add-card-button");
-export const buttonEditProfile = document.querySelector(".user__edit-button");
+export const buttonEditUserInfo = document.querySelector(".user__edit-button");
 export const buttonEditUserAvatar = document.querySelector(
 	".user__avatar-overlay"
 );
 
 // Попап редактирования профиля
-export const popupEditProfile = document.querySelector(".popup_type_profile");
-export const formEditProfile = document.forms.editProfile;
-export const userNameField = editProfile.elements.userName;
-export const userStatusField = editProfile.elements.userStatus;
+export const popupEditUserInfo = document.querySelector(".popup_type_profile");
+export const formEditUserInfo = document.forms.editProfile;
+export const userNameField = formEditUserInfo.elements.userName;
+export const userStatusField = formEditUserInfo.elements.userStatus;
+export const editUserInfoSubmitButton = formEditUserInfo.querySelector(
+	".form__submit-button"
+);
 
 // Попап добавления карточки
 export const popupAddCard = document.querySelector(".popup_type_add-card");
 export const formAddCard = document.forms.addCard;
-export const cardTitleField = addCard.elements.cardTitle;
-export const cardImageField = addCard.elements.cardImage;
+export const cardTitleField = formAddCard.elements.cardTitle;
+export const cardImageField = formAddCard.elements.cardImage;
+export const addCardSubmitButton = formAddCard.querySelector(
+	".form__submit-button"
+);
 
 // Попап карточки
 export const cardPopup = document.querySelector(".popup_type_card");
@@ -45,6 +51,9 @@ export const popupEditUserAvatar = document.querySelector(
 );
 export const formEditUserAvatar = document.forms.editUserAvatar;
 export const userAvatarImageFiled = formEditUserAvatar.elements.userAvatarLink;
+export const editUserAvatarSubmitButton = formEditUserAvatar.querySelector(
+	".form__submit-button"
+);
 
 // API
 export const cohortId = "plus-cohort-20";

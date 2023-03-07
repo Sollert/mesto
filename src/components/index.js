@@ -5,9 +5,8 @@ import {
 	userName,
 	userStatus,
 	buttonAddCard,
-	buttonEditProfile,
-	popupEditProfile,
-	formEditProfile,
+	popupEditUserInfo,
+	formEditUserInfo,
 	userNameField,
 	userStatusField,
 	popupAddCard,
@@ -18,6 +17,10 @@ import {
 	formEditUserAvatar,
 	userAvatarImageFiled,
 	buttonEditUserAvatar,
+	buttonEditUserInfo,
+	editUserInfoSubmitButton,
+	addCardSubmitButton,
+	editUserAvatarSubmitButton,
 } from "./constants.js";
 import { enableValidation, resetValidation } from "./validate.js";
 import { createCard, renderElement } from "./card.js";
@@ -33,7 +36,7 @@ import "../pages/index.css";
 
 let userId;
 
-const fillProfileForm = () => {
+const fillUserInfoForm = () => {
 	userNameField.value = userName.textContent;
 	userStatusField.value = userStatus.textContent;
 };
@@ -47,10 +50,10 @@ const changeUserAvatar = () => {
 	userAvatar.src = userAvatarImageFiled.value;
 };
 
-const openEditProfilePopup = () => {
-	fillProfileForm();
-	resetValidation(formEditProfile, validationConfig);
-	openPopup(popupEditProfile);
+const openEditUserInfoPopup = () => {
+	fillUserInfoForm();
+	resetValidation(formEditUserInfo, validationConfig);
+	openPopup(popupEditUserInfo);
 };
 
 const openAddCardPopup = () => {
@@ -67,18 +70,23 @@ const openEditUserAvatarPopup = () => {
 
 const submitFormEditUserInfo = (evt) => {
 	evt.preventDefault();
+	editUserInfoSubmitButton.textContent = "Сохранение...";
 	updateUserInfo(userNameField.value, userStatusField.value)
-		.then((res) => {
+		.then(() => {
 			changeUserInfo();
-			closePopup(popupEditProfile);
+			closePopup(popupEditUserInfo);
 		})
 		.catch((err) => {
 			console.log(`Ошибка: ${err}`);
+		})
+		.finally(() => {
+			editUserInfoSubmitButton.textContent = "Сохранить";
 		});
 };
 
 const submitFormAddCard = (evt) => {
 	evt.preventDefault();
+	addCardSubmitButton.textContent = "Сохранение...";
 	Promise.all([
 		getUserInfo(),
 		loadCard(cardTitleField.value, cardImageField.value),
@@ -103,18 +111,25 @@ const submitFormAddCard = (evt) => {
 		})
 		.catch((err) => {
 			console.log(`Ошибка: ${err}`);
+		})
+		.finally(() => {
+			addCardSubmitButton.textContent = "Создать";
 		});
 };
 
 const submitFormEditUserAvatar = (evt) => {
 	evt.preventDefault();
+	editUserAvatarSubmitButton.textContent = "Сохранение";
 	updateAvatar(userAvatarImageFiled.value)
-		.then((res) => {
+		.then(() => {
 			changeUserAvatar();
 			closePopup(popupEditUserAvatar);
 		})
 		.catch((err) => {
 			console.log(`Ошибка: ${err}`);
+		})
+		.finally(() => {
+			editUserAvatarSubmitButton.textContent = "Сохранить";
 		});
 };
 
@@ -152,11 +167,11 @@ const loadAllInfo = () => {
 loadAllInfo();
 
 /* - Вызов стартовых слушателей - */
-buttonEditProfile.addEventListener("click", openEditProfilePopup);
+buttonEditUserInfo.addEventListener("click", openEditUserInfoPopup);
 buttonAddCard.addEventListener("click", openAddCardPopup);
 buttonEditUserAvatar.addEventListener("click", openEditUserAvatarPopup);
 formAddCard.addEventListener("submit", submitFormAddCard);
-formEditProfile.addEventListener("submit", submitFormEditUserInfo);
+formEditUserInfo.addEventListener("submit", submitFormEditUserInfo);
 formEditUserAvatar.addEventListener("submit", submitFormEditUserAvatar);
 
 /* - Валидация - */

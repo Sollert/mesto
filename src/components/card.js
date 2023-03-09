@@ -1,5 +1,3 @@
-import { addLikeCard, removeLikeCard } from "./api.js";
-
 const checkLikeStatus = (likes, userId) => {
 	return likes.some((like) => {
 		return like._id === userId;

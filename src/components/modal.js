@@ -1,4 +1,4 @@
-import { cardPopup, cardPopupImage, cardPopupCaption } from "./constants.js";
+import { cardPopupImage, cardPopupCaption, cardPopup } from "./constants.js";
 
 export const openPopup = (popup) => {
 	popup.classList.add("popup_opened");
@@ -12,14 +12,14 @@ export const closePopup = (popup) => {
 	document.removeEventListener("keydown", closePopupHandler);
 };
 
-const fillCardPopupInfo = (evt, image, caption) => {
-	image.src = evt.target.src;
-	image.alt = evt.target.alt;
-	caption.textContent = evt.target.alt;
+const fillCardPopupInfo = (image, caption) => {
+	cardPopupImage.src = image;
+	cardPopupImage.alt = caption;
+	cardPopupCaption.textContent = caption;
 };
 
-export const openCardPopup = (evt) => {
-	fillCardPopupInfo(evt, cardPopupImage, cardPopupCaption);
+export const openCardPopup = (image, caption) => {
+	fillCardPopupInfo(image, caption);
 	openPopup(cardPopup);
 };
 

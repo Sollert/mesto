@@ -23,7 +23,13 @@ import {
 	editUserAvatarSubmitButton,
 } from "./constants.js";
 import { enableValidation, resetValidation } from "./validate.js";
-import { createCard, renderElement } from "./card.js";
+import {
+	createCard,
+	renderElement,
+	removeCard,
+	likeCard,
+	dislikeCard,
+} from "./card.js";
 import { openPopup, closePopup, openCardPopup } from "./modal.js";
 import {
 	getUserInfo,
@@ -31,6 +37,9 @@ import {
 	updateUserInfo,
 	updateAvatar,
 	loadCard,
+	deleteCard,
+	addLikeCard,
+	removeLikeCard,
 } from "./api.js";
 import "../pages/index.css";
 
@@ -87,11 +96,8 @@ const submitFormEditUserInfo = (evt) => {
 const submitFormAddCard = (evt) => {
 	evt.preventDefault();
 	addCardSubmitButton.textContent = "Сохранение...";
-	Promise.all([
-		getUserInfo(),
-		loadCard(cardTitleField.value, cardImageField.value),
-	])
-		.then(([user, card]) => {
+	loadCard(cardTitleField.value, cardImageField.value)
+		.then((card) => {
 			renderElement(
 				cardsContainer,
 				createCard(
@@ -100,8 +106,10 @@ const submitFormAddCard = (evt) => {
 					cardTitleField.value,
 					cardImageField.value,
 					openCardPopup,
+					deleteCardHandler,
+					likeEventHandler,
 					card._id,
-					user._id,
+					userId,
 					card.owner._id,
 					card.likes
 				)
@@ -133,6 +141,28 @@ const submitFormEditUserAvatar = (evt) => {
 		});
 };
 
+const deleteCardHandler = (deleteButton, cardId) => {
+	deleteCard(cardId)
+		.then(() => {
+			removeCard(deleteButton);
+		})
+		.catch((err) => {
+			console.log(`Ошибка: ${err}`);
+		});
+};
+
+const likeEventHandler = (likeStatus, likeButton, cardId, likeCounter) => {
+	if (likeStatus) {
+		removeLikeCard(cardId).then((data) => {
+			dislikeCard(data, likeButton, likeCounter);
+		});
+	} else {
+		addLikeCard(cardId).then((data) => {
+			likeCard(data, likeButton, likeCounter);
+		});
+	}
+};
+
 /* - Стартовые карточки - */
 const loadAllInfo = () => {
 	Promise.all([getUserInfo(), getInitialCards()])
@@ -151,6 +181,8 @@ const loadAllInfo = () => {
 						card.name,
 						card.link,
 						openCardPopup,
+						deleteCardHandler,
+						likeEventHandler,
 						card._id,
 						user._id,
 						card.owner._id,

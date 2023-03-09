@@ -1,4 +1,28 @@
-import { addLikeCard, deleteCard, loadCard, removeLikeCard } from "./api.js";
+import { addLikeCard, removeLikeCard } from "./api.js";
+
+const checkLikeStatus = (likes, userId) => {
+	return likes.some((like) => {
+		return like._id === userId;
+	});
+};
+
+export const likeCard = (data, likeButton, likeCounter) => {
+	likeButton.classList.add("card__like-button_active");
+	likeCounter.textContent = data.likes.length;
+};
+
+export const dislikeCard = (data, likeButton, likeCounter) => {
+	likeButton.classList.remove("card__like-button_active");
+	likeCounter.textContent = data.likes.length;
+};
+
+const updateLikeButtonStatus = (likeStatus, likeButton) => {
+	if (likeStatus) {
+		likeButton.classList.add("card__like-button_active");
+	} else {
+		likeButton.classList.remove("card__like-button_active");
+	}
+};
 
 const hideDeleteButton = (deleteButton, cardAuthorId, userId) => {
 	if (cardAuthorId !== userId) {
@@ -6,58 +30,8 @@ const hideDeleteButton = (deleteButton, cardAuthorId, userId) => {
 	}
 };
 
-const isLiked = (likes, likeButton, userId) => {
-	likes.forEach((like) => {
-		if (like._id === userId) {
-			likeButton.classList.add("card__like-button_active");
-		} else {
-			likeButton.classList.remove("card__like-button_active");
-		}
-	});
-};
-
-const likeCard = (likeButton, cardId, likeCounter) => {
-	addLikeCard(cardId)
-		.then((data) => {
-			likeButton.classList.add("card__like-button_active");
-			likeCounter.textContent = data.likes.length;
-		})
-		.catch((err) => {
-			console.log(`Ошибка: ${err}`);
-		});
-};
-
-const dislikeCard = (likeButton, cardId, likeCounter) => {
-	removeLikeCard(cardId)
-		.then((data) => {
-			likeButton.classList.remove("card__like-button_active");
-			likeCounter.textContent = data.likes.length;
-		})
-		.catch((err) => {
-			console.log(`Ошибка: ${err}`);
-		});
-};
-
-const likeEvent = (likeButton, cardId, likeCounter, userId) => {
-	likeButton.addEventListener("click", () => {
-		if (!likeButton.classList.contains("card__like-button_active")) {
-			likeCard(likeButton, cardId, likeCounter, userId);
-		} else {
-			dislikeCard(likeButton, cardId, likeCounter, userId);
-		}
-	});
-};
-
-const removeCard = (deleteButton, cardId) => {
-	deleteButton.addEventListener("click", () => {
-		deleteCard(cardId)
-			.then(() => {
-				deleteButton.closest(".card").remove();
-			})
-			.catch((err) => {
-				console.log(`Ошибка: ${err}`);
-			});
-	});
+export const removeCard = (deleteButton) => {
+	deleteButton.closest(".card").remove();
 };
 
 export const createCard = (
@@ -66,6 +40,8 @@ export const createCard = (
 	title,
 	imageLink,
 	handlePictureClick,
+	handleDeleteCard,
+	handleLikeEvent,
 	cardId,
 	userId,
 	cardAuthorId,
@@ -80,17 +56,28 @@ export const createCard = (
 	const likeButton = cardElement.querySelector(".card__like-button");
 	const deleteButton = cardElement.querySelector(".card__delete-button");
 	const likeCounter = cardElement.querySelector(".card__like-counter");
+	let likeStatus = checkLikeStatus(likes, userId);
 
 	cardImage.src = imageLink;
 	cardImage.alt = title;
 	cardTitle.textContent = title;
 	likeCounter.textContent = likes.length;
 
-	cardImage.addEventListener("click", handlePictureClick);
-	isLiked(likes, likeButton, userId);
 	hideDeleteButton(deleteButton, cardAuthorId, userId);
-	likeEvent(likeButton, cardId, likeCounter, userId);
-	removeCard(deleteButton, cardId);
+	updateLikeButtonStatus(likeStatus, likeButton);
+
+	likeButton.addEventListener("click", () => {
+		handleLikeEvent(likeStatus, likeButton, cardId, likeCounter);
+		likeStatus = !likeStatus;
+	});
+
+	deleteButton.addEventListener("click", () => {
+		handleDeleteCard(deleteButton, cardId);
+	});
+
+	cardImage.addEventListener("click", () => {
+		handlePictureClick(imageLink, title);
+	});
 
 	return cardElement;
 };

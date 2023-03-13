@@ -1,0 +1,17 @@
+root = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.js]
+trim_trailing_whitespace = true
+
+# Задаем форматирование для JS и CSS
+[*.{js,css}]
+indent_style = space
+indent_size = 2
+# Но не переформатируем минифицированные JS и CSS файлы.
+[*.min.*]
+indent_style = ignore
+trim_trailing_whitespace = false
+insert_final_newline = ignore

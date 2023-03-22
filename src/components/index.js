@@ -26,7 +26,7 @@ import {
   formValidators,
 } from "./constants.js";
 import Api from "./Api.js";
-import FormValidator from "./validate.js";
+import FormValidator from "./FormValidator.js";
 import {
   createCard,
   renderElement,

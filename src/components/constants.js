@@ -15,6 +15,8 @@ export const apiConfig = {
   },
 };
 
+export const formValidators = {};
+
 export const cardsContainer = document.querySelector(".cards");
 
 // Блок профиля
@@ -29,6 +31,9 @@ export const buttonEditUserInfo = document.querySelector(".user__edit-button");
 export const buttonEditUserAvatar = document.querySelector(
   ".user__avatar-overlay"
 );
+
+// Формы
+export const forms = document.querySelectorAll(".form");
 
 // Попап редактирования профиля
 export const popupEditUserInfo = document.querySelector(".popup_type_profile");

@@ -22,9 +22,11 @@ import {
   editUserInfoSubmitButton,
   addCardSubmitButton,
   editUserAvatarSubmitButton,
+  forms,
+  formValidators,
 } from "./constants.js";
-import Api from "./api.js";
-import { enableValidation, resetValidation } from "./validate.js";
+import Api from "./Api.js";
+import FormValidator from "./validate.js";
 import {
   createCard,
   renderElement,
@@ -54,19 +56,19 @@ const changeUserAvatar = () => {
 };
 
 const openEditUserInfoPopup = () => {
+  formValidators[formEditUserInfo.name].resetValidation();
   fillUserInfoForm();
-  resetValidation(formEditUserInfo, validationConfig);
   openPopup(popupEditUserInfo);
 };
 
 const openAddCardPopup = () => {
-  resetValidation(formAddCard, validationConfig);
+  formValidators[formAddCard.name].resetValidation();
   formAddCard.reset();
   openPopup(popupAddCard);
 };
 
 const openEditUserAvatarPopup = () => {
-  resetValidation(formEditUserAvatar, validationConfig);
+  formValidators[formEditUserAvatar.name].resetValidation();
   formEditUserAvatar.reset();
   openPopup(popupEditUserAvatar);
 };
@@ -205,4 +207,8 @@ formEditUserInfo.addEventListener("submit", submitFormEditUserInfo);
 formEditUserAvatar.addEventListener("submit", submitFormEditUserAvatar);
 
 /* - Валидация - */
-enableValidation(validationConfig);
+forms.forEach((form) => {
+  const formValidation = new FormValidator(validationConfig, form);
+  formValidators[form.name] = formValidation;
+  formValidation.enableValidation();
+});

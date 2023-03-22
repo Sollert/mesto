@@ -1,10 +1,18 @@
 export const validationConfig = {
-	formSelector: ".form",
-	inputSelector: ".form__input",
-	submitButtonSelector: ".form__submit-button",
-	inactiveButtonClass: "form__submit-button_disabled",
-	inputErrorClass: "form__input_type_error",
-	errorClass: "form__input-error_active",
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit-button",
+  inactiveButtonClass: "form__submit-button_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
+};
+
+export const apiConfig = {
+  baseUrl: "https://nomoreparties.co/v1/plus-cohort-20",
+  headers: {
+    authorization: "683f3065-4a13-441a-ad8e-6cb61f200f4c",
+    "Content-Type": "application/json",
+  },
 };
 
 export const cardsContainer = document.querySelector(".cards");
@@ -19,7 +27,7 @@ export const userStatus = profile.querySelector(".user__status");
 export const buttonAddCard = document.querySelector(".add-card-button");
 export const buttonEditUserInfo = document.querySelector(".user__edit-button");
 export const buttonEditUserAvatar = document.querySelector(
-	".user__avatar-overlay"
+  ".user__avatar-overlay"
 );
 
 // Попап редактирования профиля
@@ -28,7 +36,7 @@ export const formEditUserInfo = document.forms.editProfile;
 export const userNameField = formEditUserInfo.elements.userName;
 export const userStatusField = formEditUserInfo.elements.userStatus;
 export const editUserInfoSubmitButton = formEditUserInfo.querySelector(
-	".form__submit-button"
+  ".form__submit-button"
 );
 
 // Попап добавления карточки
@@ -37,7 +45,7 @@ export const formAddCard = document.forms.addCard;
 export const cardTitleField = formAddCard.elements.cardTitle;
 export const cardImageField = formAddCard.elements.cardImage;
 export const addCardSubmitButton = formAddCard.querySelector(
-	".form__submit-button"
+  ".form__submit-button"
 );
 
 // Попап карточки
@@ -47,14 +55,10 @@ export const cardPopupCaption = cardPopup.querySelector(".popup__caption");
 
 // Попап аватара
 export const popupEditUserAvatar = document.querySelector(
-	".popup_type_edit-user-avatar"
+  ".popup_type_edit-user-avatar"
 );
 export const formEditUserAvatar = document.forms.editUserAvatar;
 export const userAvatarImageFiled = formEditUserAvatar.elements.userAvatarLink;
 export const editUserAvatarSubmitButton = formEditUserAvatar.querySelector(
-	".form__submit-button"
+  ".form__submit-button"
 );
-
-// API
-export const cohortId = "plus-cohort-20";
-export const token = "683f3065-4a13-441a-ad8e-6cb61f200f4c";

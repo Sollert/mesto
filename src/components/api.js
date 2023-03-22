@@ -1,76 +1,61 @@
-// ИМПОРТ ИЗ UTIL.JS
-import { cohortId, token } from "./constants.js";
+export default class Api {
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+  }
 
-// КОНФИГ ДЛЯ ЗАПРОСОВ
-const config = {
-	baseUrl: `https://nomoreparties.co/v1/${cohortId}`,
-	headers: {
-		authorization: token,
-		"Content-Type": "application/json",
-	},
-};
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+  }
 
-// ПРОВЕРИТЬ ОТВЕТ
-const getResponseData = (res) => {
-	return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-};
+  _sendRequest(url, method, body = null) {
+    return fetch(`${this._baseUrl}/${url}`, {
+      method: method,
+      headers: this._headers,
+      body: body,
+    }).then(this._checkResponse);
+  }
 
-// ОТПРАВИТЬ ЗАПРОС
-const sendRequest = (url, method, body = null) => {
-	return fetch(`${config.baseUrl}/${url}`, {
-		method: method,
-		headers: config.headers,
-		body: body,
-	}).then(getResponseData);
-};
+  getUserInfo() {
+    return this._sendRequest(`users/me`, "GET");
+  }
 
-// ПОЛУЧИТЬ ИНФОРМАЦИЮ О ЮЗЕРЕ
-export const getUserInfo = () => {
-	return sendRequest(`users/me`, "GET");
-};
+  getInitialCards() {
+    return this._sendRequest(`cards`, "GET");
+  }
 
-// ПОЛУЧИТЬ КАРТОЧКИ
-export const getInitialCards = () => {
-	return sendRequest(`cards`, "GET");
-};
+  updateUserInfo(name, about) {
+    const body = JSON.stringify({
+      name: name,
+      about: about,
+    });
+    return this._sendRequest(`users/me`, "PATCH", body);
+  }
 
-// ОБНОВИТЬ ИНФОРМАЦИЮ О ЮЗЕРЕ
-export const updateUserInfo = (name, about) => {
-	const body = JSON.stringify({
-		name: name,
-		about: about,
-	});
-	return sendRequest(`users/me`, "PATCH", body);
-};
+  updateAvatar(avatar) {
+    const body = JSON.stringify({
+      avatar: avatar,
+    });
+    return this._sendRequest(`users/me/avatar`, "PATCH", body);
+  }
 
-// ОБНОВИТЬ АВАТАР ЮЗЕРА
-export const updateAvatar = (avatar) => {
-	const body = JSON.stringify({
-		avatar: avatar,
-	});
-	return sendRequest(`users/me/avatar`, "PATCH", body);
-};
+  loadCard(name, link) {
+    const body = JSON.stringify({
+      name: name,
+      link: link,
+    });
+    return this._sendRequest(`cards`, "POST", body);
+  }
 
-// ЗАГРУЗИТЬ КАРТОЧКУ
-export const loadCard = (name, link) => {
-	const body = JSON.stringify({
-		name: name,
-		link: link,
-	});
-	return sendRequest(`cards`, "POST", body);
-};
+  deleteCard(cardId) {
+    return this._sendRequest(`cards/${cardId}`, "DELETE");
+  }
 
-// УДАЛИТЬ КАРТОЧКУ
-export const deleteCard = (cardId) => {
-	return sendRequest(`cards/${cardId}`, "DELETE");
-};
+  addLikeCard(cardId) {
+    return this._sendRequest(`cards/likes/${cardId}`, `PUT`);
+  }
 
-// ДОБАВИТЬ ЛАЙК КАРТОЧКЕ
-export const addLikeCard = (cardId) => {
-	return sendRequest(`cards/likes/${cardId}`, `PUT`);
-};
-
-// УБРАТЬ ЛАЙК У КАРТОЧКИ
-export const removeLikeCard = (cardId) => {
-	return sendRequest(`cards/likes/${cardId}`, `DELETE`);
-};
+  removeLikeCard(cardId) {
+    return this._sendRequest(`cards/likes/${cardId}`, `DELETE`);
+  }
+}

@@ -6,7 +6,7 @@ export default class PopupWithForm extends Popup {
     this._formElement = this._popupItem.querySelector(
       popupConfig.popupFormSelector
     );
-    this._formInputs = this._formElement.querySelectorAll('.popup__input');
+    this._formInputs = this._formElement.querySelectorAll('.form__input');
     this._submitCallbackForm = submitCallbackForm;
   }
 

@@ -28,7 +28,7 @@
 @import url("./blocks/user/__info/user__info.css");
 @import url("./blocks/user/__avatar/user__avatar.css");
 @import url("./blocks/user/__name/user__name.css");
-@import url("./blocks/user/__status/user__status.css");
+@import url("./blocks/user/__about/user__about.css");
 @import url("./blocks/user/__edit-button/user__edit-button.css");
 
 /* add-card-button */

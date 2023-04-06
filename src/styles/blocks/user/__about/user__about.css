@@ -1,4 +1,4 @@
-.user__status {
+.user__about {
 	margin: 0;
 	max-width: 25ch;
 	font-weight: 400;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 768px) {
-	.user__status {
+	.user__about {
 		font-size: 14px;
 		line-height: 17px;
 		text-align: center;

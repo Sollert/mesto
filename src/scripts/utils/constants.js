@@ -7,6 +7,33 @@ export const validationConfig = {
   errorClass: "form__input-error_active",
 };
 
+export const cardConfig = {
+  cardTemplate: document.querySelector('.card-template').content,
+  cardSelector: '.card',
+  cardImageSelector: '.card__image',
+  cardTitleSelector: '.card__title',
+  deleteButtonSelector: '.card__delete-button',
+  deleteButtonDisabledClass: 'card__delete-button_disabled',
+  likeButtonSelector: '.card__like-button',
+  cardLikesCounterSelector: '.card__like-counter',
+  likeButtonActiveClass: 'card__like-button_active',
+};
+
+export const popupConfig = {
+  popupFormSelector: '.form',
+  popupSubmitButtonSelector: '.form__submit-button',
+  popupImageSelector: '.popup__image',
+  popupCaptionSelector: '.popup__caption',
+  popupOpenedClass: 'popup_opened',
+  popupCloseButtonClass: 'popup__close-button',
+};
+
+export const userConfig = {
+  userNameSelector: '.user__name',
+  userAboutSelector: '.user__about',
+  userAvatarSelector: '.user__avatar',
+};
+
 export const apiConfig = {
   baseUrl: "https://nomoreparties.co/v1/plus-cohort-20",
   headers: {

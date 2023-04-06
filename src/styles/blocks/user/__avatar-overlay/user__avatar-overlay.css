@@ -1,0 +1,38 @@
+.user__avatar-overlay {
+	position: relative;
+}
+
+.user__avatar-overlay:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0;
+	cursor: pointer;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.user__avatar-overlay:hover:before {
+	opacity: 0.8;
+}
+
+.user__avatar-overlay:after {
+	content: "";
+	position: absolute;
+	top: 47px;
+	left: 47px;
+	width: 26px;
+	height: 26px;
+	background-image: url("../../../../images/edit-avatar-button.svg");
+	opacity: 0;
+	border: none;
+	outline: none;
+}
+
+.user__avatar-overlay:hover:after {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}

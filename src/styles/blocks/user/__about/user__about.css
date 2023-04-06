@@ -1,0 +1,19 @@
+.user__about {
+	margin: 0;
+	max-width: 25ch;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+	color: #fff;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+	.user__about {
+		font-size: 14px;
+		line-height: 17px;
+		text-align: center;
+	}
+}

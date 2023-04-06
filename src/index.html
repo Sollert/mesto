@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Mesto</title>
+		<link rel="icon" href="./images/logo.svg">
 	</head>
 
 	<body class="page">
@@ -24,7 +25,7 @@
 							type="button"
 							aria-label="Отредактировать"
 						></button>
-						<p class="user__status"></p>
+						<p class="user__about"></p>
 					</div>
 				</div>
 				<button
@@ -49,7 +50,7 @@
 							id="user-name-input"
 							type="text"
 							class="form__input"
-							name="userName"
+							name="name"
 							placeholder="Введите имя"
 							minlength="2"
 							maxlength="40"
@@ -64,7 +65,7 @@
 							id="user-status-input"
 							type="text"
 							class="form__input"
-							name="userStatus"
+							name="about"
 							placeholder="Введите статус"
 							minlength="2"
 							maxlength="200"
@@ -74,7 +75,7 @@
 						/>
 						<span class="user-status-input-error form__input-error"></span>
 					</label>
-					<button type="submit" class="form__submit-button">Сохранить</button>
+					<button type="submit" class="form__submit-button" data-save="Сохранить" data-saving="Сохранение...">Сохранить</button>
 				</form>
 				<button
 					type="button"
@@ -114,7 +115,7 @@
 						/>
 						<span class="card-image-input-error form__input-error"></span>
 					</label>
-					<button type="submit" class="form__submit-button">Создать</button>
+					<button type="submit" class="form__submit-button" data-save="Создать" data-saving="Создание...">Создать</button>
 				</form>
 				<button
 					type="button"
@@ -136,6 +137,16 @@
 			</div>
 		</div>
 
+		<div class="popup page__popup popup_type_delete-card">
+			<div class="popup__container">
+				<form class="form" id="form_confirmation" name="confirmation" novalidate>
+					<h2 class="popup__title">Вы уверены?</h2>
+						<button class="form__submit-button" type="submit" data-save="Да" data-saving="Удаление...">Да</button>
+				</form>
+				<button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+			</div>
+		</div>
+
 		<div class="popup page__popup popup_type_edit-user-avatar">
 			<div class="popup__container">
 				<h2 class="popup__title">Обновить аватар</h2>
@@ -144,7 +155,7 @@
 						<input
 							type="url"
 							class="form__input"
-							name="userAvatarLink"
+							name="avatar"
 							id="user-avatar-link"
 							placeholder="Ссылка на изображение"
 							required
@@ -154,7 +165,7 @@
 							class="user-avatar-link-error form__input-error"
 						></span>
 					</label>
-					<button type="submit" class="form__submit-button">Сохранить</button>
+					<button type="submit" class="form__submit-button" data-save="Сохранить" data-saving="Сохранение...">Сохранить</button>
 				</form>
 				<button
 					type="button"

@@ -6,7 +6,7 @@
 	height: 19px;
 	padding: 0;
 	border: none;
-	background: transparent url(../../../images/card-delete-button.svg);
+	background: transparent url(../../../../images/delete-card-button.svg);
 	background-size: cover;
 	transition: opacity 0.3s ease;
 	cursor: pointer;

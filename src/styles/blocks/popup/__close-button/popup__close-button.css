@@ -6,7 +6,7 @@
 	height: 32px;
 	padding: 0;
 	border: none;
-	background: transparent url(../../../images/close-box.svg) no-repeat;
+	background: transparent url(../../../../images/close-popup-button.svg) no-repeat;
 	background-size: cover;
 	transition: opacity 0.3s ease;
 	cursor: pointer;

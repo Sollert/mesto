@@ -24,18 +24,18 @@ import {
   editUserAvatarSubmitButton,
   forms,
   formValidators,
-} from "./constants.js";
-import Api from "./Api.js";
-import FormValidator from "./FormValidator.js";
+} from "./components/constants.js";
+import Api from "./components/Api.js";
+import FormValidator from "./components/FormValidator.js";
 import {
   createCard,
   renderElement,
   removeCard,
   likeCard,
   dislikeCard,
-} from "./card.js";
-import { openPopup, closePopup, openCardPopup } from "./modal.js";
-import "../pages/index.css";
+} from "./components/card.js";
+import { openPopup, closePopup, openCardPopup } from "./components/modal.js";
+import "../styles/index.css";
 
 let userId;
 

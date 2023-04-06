@@ -2,7 +2,7 @@
 	display: block;
 	width: 142px;
 	height: 33px;
-	background: url("../../images/logo.svg");
+	background: url("../../../images/logo.svg");
 	background-size: cover;
 	color: #fff;
 }

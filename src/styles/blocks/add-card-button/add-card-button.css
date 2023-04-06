@@ -4,7 +4,7 @@
 	padding: 0;
 	border: 2px solid #fff;
 	border-radius: 2px;
-	background: transparent url(../../images/add-button.svg) no-repeat center;
+	background: transparent url(../../../images/add-card-button.svg) no-repeat center;
 	background-size: 22px 22px;
 	transition: opacity 0.3s ease;
 	cursor: pointer;

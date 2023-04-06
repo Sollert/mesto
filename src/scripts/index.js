@@ -24,7 +24,7 @@ import {
   editUserAvatarSubmitButton,
   forms,
   formValidators,
-} from "./components/constants.js";
+} from "./utils/constants.js";
 import Api from "./components/Api.js";
 import FormValidator from "./components/FormValidator.js";
 import {

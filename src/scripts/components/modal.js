@@ -1,4 +1,4 @@
-import { cardPopupImage, cardPopupCaption, cardPopup } from "./constants.js";
+import { cardPopupImage, cardPopupCaption, cardPopup } from "../utils/constants.js";
 
 export const openPopup = (popup) => {
 	popup.classList.add("popup_opened");

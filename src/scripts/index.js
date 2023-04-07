@@ -5,29 +5,13 @@ import {
   popupConfig,
   userConfig,
   apiConfig,
-  cardsContainer,
-  userAvatar,
-  userName,
-  userStatus,
+  alertConfig,
   buttonAddCard,
-  popupEditUserInfo,
   formEditUserInfo,
-  userNameField,
-  userStatusField,
-  popupAddCard,
   formAddCard,
-  cardTitleField,
-  cardImageField,
-  popupEditUserAvatar,
   formEditUserAvatar,
-  userAvatarImageFiled,
   buttonEditUserAvatar,
-  buttonEditUserInfo,
-  editUserInfoSubmitButton,
-  addCardSubmitButton,
-  editUserAvatarSubmitButton,
-  forms,
-  formValidators,
+  buttonEditUserInfo
 } from "./utils/constants.js";
 import Api from "./components/Api.js";
 import FormValidator from "./components/FormValidator.js";
@@ -37,6 +21,7 @@ import UserInfo from './components/UserInfo.js'
 import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithConfirmation from './components/PopupWithConfirmation.js';
+import Alert from './components/Alert.js';
 
 const api = new Api(apiConfig);
 const userInfo = new UserInfo(userConfig);
@@ -59,6 +44,10 @@ const cardSection = new Section('.cards', {
   renderer: (userId, cardData) => createCard(userId, cardData),
 });
 
+// Экземпляр класса Alert
+const errorAlert = new Alert('.alert_type_error', alertConfig);
+errorAlert.setEventListeners();
+
 // Экземпляр класса PopupWithImage
 const cardPopup = new PopupWithImage('.popup_type_card', popupConfig);
 cardPopup.setEventListeners();
@@ -70,6 +59,7 @@ const avatarPopup = new PopupWithForm('.popup_type_edit-user-avatar', popupConfi
       const res = await api.updateAvatar(formValues.avatar);
       userInfo.setUserAvatar(res.avatar);
     } catch (err) {
+      errorAlert.openAlert(err);
       console.log(err);
     }
   },
@@ -86,6 +76,7 @@ const profilePopup = new PopupWithForm('.popup_type_profile', popupConfig, {
       );
       userInfo.setUserInfo(res.name, res.about);
     } catch (err) {
+      errorAlert.openAlert(err);
       console.log(err);
     }
   },
@@ -103,6 +94,7 @@ const addCardPopup = new PopupWithForm('.popup_type_add-card', popupConfig, {
       const newCard = cardSection.renderItem(cardData.owner._id, cardData);
       cardSection.setItem(newCard);
     } catch (err) {
+      errorAlert.openAlert(err);
       console.log(err);
     }
   },
@@ -119,6 +111,7 @@ const deleteCardPopup = new PopupWithConfirmation(
         const res = await api.deleteCard(card._cardId);
         card.removeCard(res);
       } catch (err) {
+        errorAlert.openAlert(err);
         console.log(err);
       }
     },
@@ -140,6 +133,7 @@ const handleCardLike = (card) => {
         card.toggleLike(res);
       })
       .catch((err) => {
+        errorAlert.openAlert(err);
         console.log(err);
       });
   } else {
@@ -149,6 +143,7 @@ const handleCardLike = (card) => {
         card.toggleLike(res);
       })
       .catch((err) => {
+        errorAlert.openAlert(err);
         console.log(err);
       });
   }
@@ -173,6 +168,7 @@ async function renderElements() {
       cardSection.setItem(newCard);
     });
   } catch (err) {
+    errorAlert.openAlert(err);
     console.log(err);
   }
 }

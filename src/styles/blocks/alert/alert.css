@@ -1,0 +1,18 @@
+.alert {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  border-radius: 10px;
+  border-left: 10px solid #aa0606;
+  background: #fff;
+  min-width: 250px;
+  padding: 20px;
+  font-family: "Inter", "Arial", sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 17px;
+}

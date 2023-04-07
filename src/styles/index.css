@@ -73,3 +73,10 @@
 @import url("./blocks/form/__input-error/_active/form__input-error_active.css");
 @import url("./blocks/form/__submit-button/form__submit-button.css");
 @import url("./blocks/form/__submit-button/_disabled/form__submit-button_disabled.css");
+
+/* alert */
+@import url("./blocks/alert/alert.css");
+@import url("./blocks/alert/_opened/alert_opened.css");
+@import url('./blocks/alert/__icon/alert__icon.css');
+@import url('./blocks/alert/__message/alert__message.css');
+@import url('./blocks/alert/__close-button/alert__close-button.css')

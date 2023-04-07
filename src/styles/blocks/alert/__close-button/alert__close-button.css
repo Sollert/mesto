@@ -1,0 +1,23 @@
+.alert__close-button {
+  width: 16px;
+  height: 16px;
+	padding: 0;
+	border: none;
+	background: transparent url(../../../../images/close-popup-button.svg) no-repeat;
+	background-size: cover;
+	transition: opacity 0.3s ease;
+	cursor: pointer;
+}
+
+.alert__close-button:hover {
+	opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+	.alert__close-button {
+		top: -36px;
+		right: 0;
+		width: 20px;
+		height: 20px;
+	}
+}

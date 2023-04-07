@@ -1,0 +1,16 @@
+.alert_opened {
+  display: flex;
+  animation: show-alert 1s forwards;
+}
+
+@keyframes show-alert {
+  0% {
+    transform: translateX(120%);
+  }
+  40% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

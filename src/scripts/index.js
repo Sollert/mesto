@@ -61,8 +61,8 @@ const avatarPopup = new PopupWithForm('.popup_type_edit-user-avatar', popupConfi
       const res = await api.updateAvatar(formValues.avatar);
       userInfo.setUserAvatar(res.avatar);
     } catch (err) {
-      errorAlert.openAlert(err);
-      console.log('Не удалось обновить аватар');
+      errorAlert.openAlert('Не удалось обновить аватар');
+      console.log(err);
     }
   },
 });
@@ -78,8 +78,8 @@ const profilePopup = new PopupWithForm('.popup_type_profile', popupConfig, {
       );
       userInfo.setUserInfo(res.name, res.about);
     } catch (err) {
-      errorAlert.openAlert(err);
-      console.log('Не удалось обновить информацию о профиле');
+      errorAlert.openAlert('Не удалось обновить информацию о профиле');
+      console.log(err);
     }
   },
 });
@@ -96,7 +96,7 @@ const addCardPopup = new PopupWithForm('.popup_type_add-card', popupConfig, {
       const newCard = cardSection.renderItem(cardData.owner._id, cardData);
       cardSection.setItem(newCard);
     } catch (err) {
-      errorAlert.openAlert(err);
+      errorAlert.openAlert('Не удалось загрузить страницу');
       console.log(err);
     }
   },
@@ -113,8 +113,8 @@ const deleteCardPopup = new PopupWithConfirmation(
         const res = await api.deleteCard(card._cardId);
         card.removeCard(res);
       } catch (err) {
-        errorAlert.openAlert(err);
-        console.log('Не удалось удалить карточку');
+        errorAlert.openAlert('Не удалось удалить карточку');
+        console.log(err);
       }
     },
   }
@@ -135,8 +135,8 @@ const handleCardLike = (card) => {
         card.toggleLike(res);
       })
       .catch((err) => {
-        errorAlert.openAlert(err);
-        console.log('Не удалось убрать лайк с карточки');
+        errorAlert.openAlert('Не удалось убрать лайк с карточки');
+        console.log(err);
       });
   } else {
     api
@@ -145,8 +145,8 @@ const handleCardLike = (card) => {
         card.toggleLike(res);
       })
       .catch((err) => {
-        errorAlert.openAlert(err);
-        console.log('Не удалось лайкнуть карточку');
+        errorAlert.openAlert('Не удалось добавить лайк карточке');
+        console.log(err);
       });
   }
 };
@@ -171,8 +171,8 @@ async function renderElements() {
     });
     hideInitialLoading(initialLoadingPopup)
   } catch (err) {
-    errorAlert.openAlert(err);
-    console.log('Не удалось загрузить страницу');
+    errorAlert.openAlert('Не удалось загрузить страницу');
+    console.log(err);
   }
 }
 

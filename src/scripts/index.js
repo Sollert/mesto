@@ -11,8 +11,10 @@ import {
   formAddCard,
   formEditUserAvatar,
   buttonEditUserAvatar,
-  buttonEditUserInfo
+  buttonEditUserInfo,
+  initialLoadingPopup
 } from "./utils/constants.js";
+import { hideInitialLoading } from "./utils/utils.js";
 import Api from "./components/Api.js";
 import FormValidator from "./components/FormValidator.js";
 import Section from './components/Section.js';
@@ -60,7 +62,7 @@ const avatarPopup = new PopupWithForm('.popup_type_edit-user-avatar', popupConfi
       userInfo.setUserAvatar(res.avatar);
     } catch (err) {
       errorAlert.openAlert(err);
-      console.log(err);
+      console.log('Не удалось обновить аватар');
     }
   },
 });
@@ -77,7 +79,7 @@ const profilePopup = new PopupWithForm('.popup_type_profile', popupConfig, {
       userInfo.setUserInfo(res.name, res.about);
     } catch (err) {
       errorAlert.openAlert(err);
-      console.log(err);
+      console.log('Не удалось обновить информацию о профиле');
     }
   },
 });
@@ -112,7 +114,7 @@ const deleteCardPopup = new PopupWithConfirmation(
         card.removeCard(res);
       } catch (err) {
         errorAlert.openAlert(err);
-        console.log(err);
+        console.log('Не удалось удалить карточку');
       }
     },
   }
@@ -134,7 +136,7 @@ const handleCardLike = (card) => {
       })
       .catch((err) => {
         errorAlert.openAlert(err);
-        console.log(err);
+        console.log('Не удалось убрать лайк с карточки');
       });
   } else {
     api
@@ -144,7 +146,7 @@ const handleCardLike = (card) => {
       })
       .catch((err) => {
         errorAlert.openAlert(err);
-        console.log(err);
+        console.log('Не удалось лайкнуть карточку');
       });
   }
 };
@@ -167,9 +169,10 @@ async function renderElements() {
       const newCard = cardSection.renderItem(profile._id, card);
       cardSection.setItem(newCard);
     });
+    hideInitialLoading(initialLoadingPopup)
   } catch (err) {
     errorAlert.openAlert(err);
-    console.log(err);
+    console.log('Не удалось загрузить страницу');
   }
 }
 

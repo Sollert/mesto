@@ -55,6 +55,9 @@ export const buttonEditUserAvatar = document.querySelector(
   ".user__avatar-overlay"
 );
 
+// Попап загрузки
+export const initialLoadingPopup = document.querySelector('.popup_type_loader');
+
 // Формы
 export const formEditUserInfo = document.forms.editProfile;
 export const formAddCard = document.forms.addCard;
